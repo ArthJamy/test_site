@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en" class="no-js">
+
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link rel="stylesheet" href="css/reset.css"> <!-- CSS reset -->
+	<link rel="stylesheet" href="css/style.css"> <!-- Resource style -->
+	<script src="js/modernizr.js"></script> <!-- Modernizr -->
+  	
+	<title>Mega Dropdown | CodyHouse</title>
+</head>
+
+
+<main class="cd-main-content">
+  <!-- your content here -->
+  <body>
+    <div id="header"></div>
+
+    <h1>Bienvenue</h1>
+    <p>Contenu de la page…</p>
+
+    <script>
+      fetch("header.html")
+        .then(res => res.text())
+        .then(data => {
+          document.getElementById("header").innerHTML = data;
+        });
+    </script>
+  </body>
+
+</main>
