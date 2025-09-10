@@ -16,45 +16,39 @@
   <div id="contenu"></div>
 
   <script>
-    // Récupérer le paramètre d'URL
-    function getQueryParam(name) {
-      return new URLSearchParams(window.location.search).get(name);
-    }
     const params = new URLSearchParams(window.location.search);
-    const categorie = decodeURIComponent(params.get("categorie"));
+const categorie = decodeURIComponent(params.get("categorie"));
 
-    //const categorie = getQueryParam("categorie");
-    document.getElementById("titre").textContent = categorie;
+document.getElementById("titre").textContent = categorie;
 
-    fetch("videos.json")
-      .then(res => res.json())
-      .then(data => {
-        const contenu = document.getElementById("contenu");
-        const sousParties = data[categorie]?.[0]; // ton JSON a un tableau avec un objet
+fetch("videos.json")
+  .then(res => res.json())
+  .then(data => {
+    const contenu = document.getElementById("contenu");
+    const sousParties = data[categorie];
 
-        if (!sousParties) {
-          contenu.innerHTML = "<p>Aucune vidéo trouvée pour cette catégorie.</p>";
-          return;
-        }
+    if (!sousParties) {
+      contenu.innerHTML = "<p>Aucune vidéo trouvée pour cette catégorie.</p>";
+      return;
+    }
 
-        // Pour chaque sous-partie
-        Object.keys(sousParties).forEach(sousCat => {
-          const section = document.createElement("div");
-          section.innerHTML = `<h2>${sousCat}</h2>`;
+    Object.keys(sousParties).forEach(sousCat => {
+      const section = document.createElement("div");
+      section.innerHTML = `<h2>${sousCat}</h2>`;
 
-          sousParties[sousCat].forEach(video => {
-            section.innerHTML += `
-              <div class="video">
-                <h3>${video.titre}</h3>
-                <iframe src="${video.url}" allowfullscreen></iframe>
-              </div>
-            `;
-          });
-
-          contenu.appendChild(section);
-        });
+      sousParties[sousCat].forEach(video => {
+        section.innerHTML += `
+          <div class="video">
+            <h3>${video.titre}</h3>
+            <iframe src="${video.url}" allowfullscreen></iframe>
+          </div>
+        `;
       });
+
+      contenu.appendChild(section);
+    });
+  });
+
   </script>
 </body>
 </html>
-
