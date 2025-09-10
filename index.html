@@ -172,7 +172,7 @@ fetch("videos.json")
 
       li.appendChild(ulSecond);
       // ⚠️ On ajoute directement au menu, pas dans un <li> vide
-      menu.appendChild(li);
+      menu.insertAdjacentElement("beforebegin", li);
     }
 
     // Supprimer le li vide qui sert juste de repère
