@@ -35,11 +35,13 @@
 					<a href="#0" class="cd-close">Fermer</a>
 					<ul class="cd-dropdown-content">
 
-						<li class="cd-divider">Exercices</li>
-
-						<li id="menu"></li>
-
-						<li class="cd-divider">Autre</li>
+						  <li class="cd-divider">Exercices</li>
+  
+						  <!-- Ici on injecte dynamiquement les catégories JSON -->
+						  
+						  <li id="menu"></li>
+						  
+						  <li class="cd-divider">Autre</li>
 
 						<li class="has-children">
 							<a href="http://codyhouse.co/?p=748">Contact</a>
@@ -117,57 +119,58 @@
 
 
 	<script>
-		fetch("videos.json")
-			.then(res => res.json())
-			.then(data => {
-				const menu = document.getElementById("menu");
+fetch("videos.json")
+  .then(res => res.json())
+  .then(data => {
+    const menu = document.getElementById("menu");
 
-				// Boucle sur les 3 grandes catégories
-				for (const grandCategorie in data) {
-					const li = document.createElement("li");
-					li.classList.add("has-children");
+    for (const grandCategorie in data) {
+      const li = document.createElement("li");
+      li.classList.add("has-children");
 
-					// Nom de la grande catégorie
-					li.innerHTML = `<a href="#0">${grandCategorie}</a>`;
+      // Nom de la grande catégorie
+      li.innerHTML = `<a href="#0">${grandCategorie}</a>`;
 
-					// Sous-menu principal
-					const ulSecond = document.createElement("ul");
-					ulSecond.classList.add("cd-secondary-dropdown", "is-hidden");
-					ulSecond.innerHTML = `
+      // Sous-menu
+      const ulSecond = document.createElement("ul");
+      ulSecond.classList.add("cd-secondary-dropdown", "is-hidden");
+      ulSecond.innerHTML = `
         <li class="go-back"><a href="#0">Menu</a></li>
         <li class="see-all"><a href="catégories/${grandCategorie}.html">Tous les exercices</a></li>
       `;
 
-					// Récupérer les sous-catégories
-					const sousCategories = data[grandCategorie];
-					for (const sousCat in sousCategories) {
-						const liSous = document.createElement("li");
-						liSous.classList.add("has-children");
-						liSous.innerHTML = `<a href="#0">${sousCat}</a>`;
+      const sousCategories = data[grandCategorie];
+      for (const sousCat in sousCategories) {
+        const liSous = document.createElement("li");
+        liSous.classList.add("has-children");
+        liSous.innerHTML = `<a href="#0">${sousCat}</a>`;
 
-						// Sous-sous-menu (vidéos de la sous-catégorie)
-						const ulVideos = document.createElement("ul");
-						ulVideos.classList.add("is-hidden");
-						ulVideos.innerHTML = `
+        const ulVideos = document.createElement("ul");
+        ulVideos.classList.add("is-hidden");
+        ulVideos.innerHTML = `
           <li class="go-back"><a href="#0">Retour</a></li>
           <li class="see-all"><a href="catégories/${grandCategorie}-${sousCat}.html">Voir tout</a></li>
         `;
 
-						// Les vidéos de la sous-catégorie
-						sousCategories[sousCat].forEach(video => {
-							const liVideo = document.createElement("li");
-							liVideo.innerHTML = `<a href="${video.url}" target="_blank">${video.titre}</a>`;
-							ulVideos.appendChild(liVideo);
-						});
+        sousCategories[sousCat].forEach(video => {
+          const liVideo = document.createElement("li");
+          liVideo.innerHTML = `<a href="${video.url}" target="_blank">${video.titre}</a>`;
+          ulVideos.appendChild(liVideo);
+        });
 
-						liSous.appendChild(ulVideos);
-						ulSecond.appendChild(liSous);
-					}
+        liSous.appendChild(ulVideos);
+        ulSecond.appendChild(liSous);
+      }
 
-					li.appendChild(ulSecond);
-					menu.appendChild(li);
-				}
-			});
+      li.appendChild(ulSecond);
+      // ⚠️ On ajoute directement au menu, pas dans un <li> vide
+      menu.insertAdjacentElement("beforebegin", li);
+    }
+
+    // Supprimer le li vide qui sert juste de repère
+    menu.remove();
+  });
+
 	</script>
 
 
