@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="fr" class="no-js">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mes favoris</title>
+  <link rel="stylesheet" href="css/reset.css"> <!-- CSS reset -->
+	<link rel="stylesheet" href="css/style.css"> <!-- Resource style -->
+  
+</head>
+<body>
+  <header class="site-header">
+    <div class="top-bar">
+      <a href="index.html">Accueil</a>
+      <button id="btn-google" class="google-btn">🔒 Se connecter</button>
+    </div>
+    <h1>Mon menu d’exercices</h1>
+  </header>
+
+  <main class="site-content">
+    <ul class="video-links" id="favoris-list">
+      <!-- Chargé dynamiquement -->
+    </ul>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; Cabinet Kiné</p>
+  </footer>
+
+  <script type="module">
+    // 1) Imports Firebase modules
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
+    import {
+      getAuth,
+      onAuthStateChanged,
+      signInWithPopup,
+      GoogleAuthProvider,
+      signOut
+    } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
+    import {
+      getFirestore,
+      doc,
+      getDoc,
+      setDoc
+    } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
+
+    // 2) Configuration Firebase
+    const firebaseConfig = {
+      apiKey: "AIzaSyA7r18GtsCIi1n2AoaBFG-lAYyBPXFIw4Q",
+      authDomain: "imssa-2d3cb.firebaseapp.com",
+      projectId: "imssa-2d3cb",
+      storageBucket: "imssa-2d3cb.appspot.com",
+      messagingSenderId: "976927404721",
+      appId: "1:976927404721:web:3484dd21e9e52a1e692890",
+      measurementId: "G-SKTEPM9LKC"
+    };
+
+    // 3) Initialise Firebase
+    const app  = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db   = getFirestore(app);
+
+    // 4) Bouton Google Sign-In/Out
+    const btnGoogle = document.getElementById('btn-google');
+    btnGoogle.addEventListener('click', () => {
+      if (!auth.currentUser) {
+        signInWithPopup(auth, new GoogleAuthProvider()).catch(console.error);
+      } else {
+        signOut(auth).catch(console.error);
+      }
+    });
+
+    // 5) État de connexion et affichage des favoris
+    const favList = document.getElementById('favoris-list');
+    onAuthStateChanged(auth, async user => {
+      if (user) {
+        btnGoogle.textContent = `👤 ${user.displayName}`;
+        const ref  = doc(db, 'users', user.uid);
+        const snap = await getDoc(ref);
+        const favs = snap.exists() ? snap.data().favoris : [];
+        renderFavoris(favs);
+      } else {
+        btnGoogle.textContent = '🔒 Se connecter';
+        favList.innerHTML = '<p>Connectez-vous pour voir vos favoris.</p>';
+      }
+    });
+
+    // 6) Fonction de rendu des favoris
+    function renderFavoris(favs) {
+      if (favs.length === 0) {
+        favList.innerHTML = '<p>Aucun favori pour cet utilisateur.</p>';
+        return;
+      }
+      favList.innerHTML = '';
+      favs.forEach(video => {
+        const li = document.createElement('li');
+        li.className = 'video-item';
+        li.innerHTML = `
+          <a href="video.html?id=${video.id}&label=${encodeURIComponent(video.label)}">
+            ${video.label}
+          </a>
+        `;
+        favList.appendChild(li);
+      });
+    }
+  </script>
+</body>
+</html>

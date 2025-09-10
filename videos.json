@@ -1,0 +1,52 @@
+{
+  "étirements-mobilité": {
+    "Membre inférieur": [
+      {
+        "titre": "Étirement du jambes",
+        "url": "https://www.youtube.com/embed/3sGwJhYRVzI?si=2pshNagurJdjYLQY"
+      },
+      {
+        "titre": "Étirement du jambes 2",
+        "url": "https://www.youtube.com/embed/3sGwJhYRVzI?si=2pshNagurJdjYLQY"
+      }
+    ],
+    "Membre supérieur": [
+      {
+        "titre": "Étirement du dos",
+        "url": "https://www.youtube.com/embed/3sGwJhYRVzI?si=2pshNagurJdjYLQY"
+      }
+    ]
+  },
+
+
+  "renforcement-proprioception": {
+    "Membre inférieur renf": [
+      {
+        "titre": "Pompes faciles",
+        "url": "https://www.youtube.com/embed/3sGwJhYRVzI?si=2pshNagurJdjYLQY"
+      }
+    ],
+    "Membre supérieur renf": [
+      {
+        "titre": "Pompes faciles",
+        "url": "https://www.youtube.com/embed/3sGwJhYRVzI?si=2pshNagurJdjYLQY"
+      }
+    ]
+  },
+
+  
+  "Réathlétisation": {
+    "Haut du corps": [
+      {
+        "titre": "Pompes faciles",
+        "url": "https://www.youtube.com/embed/3sGwJhYRVzI?si=2pshNagurJdjYLQY"
+      }
+    ],
+    "Bas du corps": [
+      {
+        "titre": "Pompes faciles",
+        "url": "https://www.youtube.com/embed/3sGwJhYRVzI?si=2pshNagurJdjYLQY"
+      }
+    ]
+  }
+}
