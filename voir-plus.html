@@ -178,6 +178,11 @@
 
                 // Supprimer le li vide qui sert juste de repère
                 menu.remove();
+
+				// Après avoir injecté vos nouveaux éléments dans le DOM
+				if (typeof window.reinitializeDropdownEvents === 'function') {
+				    window.reinitializeDropdownEvents();
+				}
             });
 
     </script>
@@ -228,3 +233,4 @@
 </body>
 
 </html>
+
