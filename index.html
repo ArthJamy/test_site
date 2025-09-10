@@ -149,7 +149,11 @@ fetch("videos.json")
         ulVideos.classList.add("is-hidden");
         ulVideos.innerHTML = `
           <li class="go-back"><a href="#0">Retour</a></li>
-          <li class="see-all"><a href="catégories/${grandCategorie}-${sousCat}.html">Voir tout</a></li>
+          <li class="see-all">
+			  <a href="voir-plus.html?categorie=${encodeURIComponent(grandCategorie)}&souscat=${encodeURIComponent(sousCat)}">
+			    Voir tout
+			  </a>
+			</li>
         `;
 
         sousCategories[sousCat].forEach(video => {
