@@ -20,8 +20,9 @@ html {
   /* Empêche la répétition de l'image */
   background-position: center;
   /* Centre l'image */
-  min-height: 105vh;
-
+  
+  height: auto;  /* la hauteur s'adapte au contenu */
+  min-height: 100%; /* au moins la taille du viewport */
 }
 
 body {
@@ -29,8 +30,9 @@ body {
   font-family: sans-serif;
   color: #111433;
   background-color: #ffffff00;
-  height: 1em;
 
+  height: auto;  /* la hauteur s'adapte au contenu */
+  min-height: 100%;
 }
 
 header {
