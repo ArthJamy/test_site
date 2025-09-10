@@ -14,8 +14,8 @@ jQuery(document).ready(function($){
 	// CORRECTION : Délégation d'événements pour les éléments créés dynamiquement
 	// On mobile - open submenu (avec délégation d'événements)
 	$(document).on('click', '.has-children > a', function(event){
-		// Vérifier si on est en mode mobile (largeur < 768px par exemple)
-		if ($(window).width() < 768) {
+		// Vérifier si on est en mode mobile (largeur < 1024px par exemple)
+		if ($(window).width() < 1024) {
 			event.preventDefault();
 			var selected = $(this);
 			selected.next('ul').removeClass('is-hidden').end().parent('.has-children').parent('ul').addClass('move-out');
