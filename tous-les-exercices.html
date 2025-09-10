@@ -20,8 +20,10 @@
     function getQueryParam(name) {
       return new URLSearchParams(window.location.search).get(name);
     }
+    const params = new URLSearchParams(window.location.search);
+    const categorie = decodeURIComponent(params.get("categorie"));
 
-    const categorie = getQueryParam("categorie");
+    //const categorie = getQueryParam("categorie");
     document.getElementById("titre").textContent = categorie;
 
     fetch("videos.json")
@@ -55,3 +57,4 @@
   </script>
 </body>
 </html>
+
