@@ -42,7 +42,7 @@
 
           div.innerHTML = `
             <h3>${video.titre}</h3>
-            <iframe src="https://www.youtube.com/embed/${extraireIdYoutube(video.url)}" allowfullscreen></iframe>
+            <iframe src="${video.url}" allowfullscreen></iframe>
           `;
 
           container.appendChild(div);
@@ -58,3 +58,4 @@
   </script>
 </body>
 </html>
+
