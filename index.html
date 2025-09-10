@@ -136,7 +136,11 @@ fetch("videos.json")
       ulSecond.classList.add("cd-secondary-dropdown", "is-hidden");
       ulSecond.innerHTML = `
         <li class="go-back"><a href="#0">Menu</a></li>
-        <li class="see-all"><a href="catégories/${grandCategorie}.html">Tous les exercices</a></li>
+		<li class="see-all">
+		<a href="tous-les-exercices.html?categorie=${encodeURIComponent(grandCategorie)}">
+			Tous les exercices
+		</a>
+		</li>
       `;
 
       const sousCategories = data[grandCategorie];
