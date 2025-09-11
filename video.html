@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="fr" class="no-js">
+<html lang="fr">
 
 <head>
     <meta charset="UTF-8">
@@ -380,7 +380,11 @@
                     userFavorites = [];
                 }
             } else {
-                btnGoogle.textContent = "🔒";
+                if (largeurEcran > 1024) {
+                    btnGoogle.textContent = "🔒 Se connecter";
+                } else {
+                    btnGoogle.textContent = `🔒`;
+                }
                 userFavorites = [];
             }
 

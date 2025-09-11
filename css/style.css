@@ -123,6 +123,7 @@ Main Components
   background-color: #0C5073;
 }
 
+
 /* === Footer === */
 .site-footer {
   text-align: center;
@@ -131,6 +132,7 @@ Main Components
   margin: 1.5rem;
   
 }
+
 
 /* === Menu dropdown === */
 .cd-dropdown-wrapper {
@@ -201,9 +203,7 @@ Main Components
     content: " Mes favoris";
  
   }
-  #btn-google::after {
-    content: " Se connecter";
-  }
+
   .cd-dropdown-trigger {
     font-size: 1.5rem;
   }
