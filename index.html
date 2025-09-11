@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="fr" class="no-js">
+<html lang="fr">
 
 <head>
 	<meta charset="UTF-8">
@@ -12,7 +12,66 @@
 	<!-- FAVICON -->
 	<link rel="icon" href="img/logoIMSSA.ico" type="image/x-icon">
 
-	<title>Site IMSSA | Test</title>
+	<title>Site IMSSA | Accueil</title>
+	<style>
+		.hero-text p{
+			background: white;
+			padding: 15px;
+			border-radius: 10px;
+			text-align: center;
+			box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+		}
+
+		.hero-text h1 {
+			margin-top: 50px;
+			text-align: center;
+			font-size: 2em;
+		}
+	
+		.hero-img {
+			width: 100%;
+			height: auto;
+			border-radius: 20px;
+			box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+			display: block; /* Transforme l'image en élément de bloc */
+			margin: 0 auto; /* Centre horizontalement */
+			padding-top: 10px;
+		}
+	
+		.team-grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+			gap: 20px;
+		}
+	
+		.praticien-card {
+			background: white;
+			padding: 15px;
+			border-radius: 10px;
+			border: 2px solid white;
+			box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+			text-align: center;
+		}
+	
+		.praticien-card:hover {
+			border: 2px solid #1AA9BE;
+			transform: translateX(2px);
+			box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+		}
+	
+		.praticien-card img {
+			height: 40%;
+		}
+		@media only screen and (min-width: 1024px) {
+			.hero-img {
+				width: 50%;
+				grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+			}
+			.hero-text h1::after {
+				content: " - Kiné • Sport • Santé";
+			}
+		}
+	</style>
 </head>
 
 <body>
@@ -35,57 +94,60 @@
 					<a href="#0" class="cd-close">Fermer</a>
 					<ul class="cd-dropdown-content">
 
-						  <li class="cd-divider">Exercices</li>
-  
-						  <!-- Ici on injecte dynamiquement les catégories JSON -->
-						  
-						  <li id="menu"></li>
-						  
-						  <li class="cd-divider">Autre</li>
+						<li class="cd-divider">Exercices</li>
+
+						<!-- Ici on injecte dynamiquement les catégories JSON -->
+
+						<li id="menu"></li>
+
+						<li class="cd-divider">Autre</li>
 
 						<li class="has-children">
-							<a href="http://codyhouse.co/?p=748">Contact</a>
+							<a href="#0">Contact</a>
 							<ul class="cd-dropdown-icons is-hidden">
 								<li class="go-back"><a href="#0">Contact</a></li>
 								<li>
-									<a class="cd-dropdown-item item-1" href="http://codyhouse.co/?p=748">
+									<a class="cd-dropdown-item item-1" target="_blank"
+										href="https://www.instagram.com/imssa68?utm_source=ig_web_button_share_sheet">
 										<h3>Instagram</h3>
-										<p>This is the item description</p>
+										<p>Retrouvez nous sur Instagram</p>
 									</a>
 								</li>
 
 								<li>
-									<a class="cd-dropdown-item item-2" href="http://codyhouse.co/?p=748">
+									<a class="cd-dropdown-item item-2" target="_blank" href="#0">
 										<h3>TikTok</h3>
-										<p>This is the item description</p>
+										<p>Retrouvez nous sur TikTok</p>
 									</a>
 								</li>
 
 								<li>
-									<a class="cd-dropdown-item item-3" href="http://codyhouse.co/?p=748">
+									<a class="cd-dropdown-item item-3" target="_blank" href="#0">
 										<h3>Mail</h3>
-										<p>This is the item description</p>
+										<p>Nous contacter par mail</p>
 									</a>
 								</li>
 
 								<li>
-									<a class="cd-dropdown-item item-4" href="http://codyhouse.co/?p=748">
+									<a class="cd-dropdown-item item-4" target="_blank"
+										href="https://imssa.monrdvkine.fr">
 										<h3>MonRdvKiné</h3>
-										<p>This is the item description</p>
+										<p>Prendre rendez-vous</p>
 									</a>
 								</li>
 
 								<li>
-									<a class="cd-dropdown-item item-5" href="http://codyhouse.co/?p=748">
+									<a class="cd-dropdown-item item-5" target="_blank" href="tel:+33389605426">
 										<h3>Téléphone</h3>
-										<p>This is the item description</p>
+										<p>03 89 60 54 26</p>
 									</a>
 								</li>
 
 								<li>
-									<a class="cd-dropdown-item item-6" href="http://codyhouse.co/?p=748">
+									<a class="cd-dropdown-item item-6" target="_blank"
+										href="https://www.google.fr/maps/place/IMSSA+Institut+Médico-Sportif+Sud+Alsace/@47.7314575,7.3131683,16z/data=!3m1!4b1!4m6!3m5!1s0x47919bc25e3f6491:0xdd3ad8e21621fc7b!8m2!3d47.7314539!4d7.3157432!16s%2Fg%2F11fsm1b_fz?entry=ttu&g_ep=EgoyMDI1MDkwOC4wIKXMDSoASAFQAw%3D%3D">
 										<h3>Google Map</h3>
-										<p>This is the item description</p>
+										<p>Accéder à Google Map</p>
 									</a>
 								</li>
 
@@ -101,9 +163,59 @@
 	<!--			 MAIN			 -->
 
 	<main class="cd-main-content">
-		<h1>Bienvenue dans le site web IMSSA</h1>
-		<img src="img/cabinet.webp" alt="cabinet IMSSA" id="image-cabinet">
+		<section class="hero">
+			<div class="hero-text">
+				<h1>Cabinet IMSSA</h1>
+				<p>Bienvenue sur le site du cabinet IMSSA.<br>
+					Vous trouverez ici une bibliothèque de vidéos conçues
+					pour vous accompagner dans vos exercices.
+					Chaque patient peut suivre les mouvements expliqués, s’entraîner en toute autonomie et même ajouter ses vidéos
+					préférées en favoris afin de les retrouver rapidement.</p>
+			</div>
+			<img src="img/cabinet.webp" alt="Photo du cabinet" class="hero-img">
+		</section>
 
+		<section class="team">
+			<h2>Nos praticiens</h2>
+			<div class="team-grid">
+				<a target="_blank"
+					href="https://monrdvkine.fr/masseur-kinesitherapeute/PFASTATT-68120/buob-chloe/rendez-vous">
+					<div class="praticien-card">
+						<img src="img/praticienne.svg" alt="praticienne">
+						<h3>BUOB Chloé</h3>
+						<p>Kiné du sport</p>
+					</div>
+				</a>
+				<a target="_blank" href="https://imssa.monrdvkine.fr/p/chaudet-arnaud">
+					<div class="praticien-card">
+						<img src="img/praticien.svg" alt="praticien">
+						<h3>CHAUDET Arnaud</h3>
+						<p>Kiné du sport</p>
+					</div>
+				</a>
+				<a target="_blank" href="https://imssa.monrdvkine.fr/p/laurino-calogero">
+					<div class="praticien-card">
+						<img src="img/praticien.svg" alt="praticien">
+						<h3>LAURINO Calogero</h3>
+						<p>Kiné du sport</p>
+					</div>
+				</a>
+				<a target="_blank" href="https://imssa.monrdvkine.fr/p/nstutz">
+					<div class="praticien-card">
+						<img src="img/praticien.svg" alt="praticien">
+						<h3>STUTZ Nicolas</h3>
+						<p>Kiné du sport</p>
+					</div>
+				</a>
+				<a target="_blank" href="https://imssa.monrdvkine.fr/p/grunenwald-maeva">
+					<div class="praticien-card">
+						<img src="img/praticienne.svg" alt="praticienne">
+						<h3>GRUNENWALD Maeva</h3>
+						<p>Kiné du sport</p>
+					</div>
+				</a>
+			</div>
+		</section>
 	</main>
 
 
@@ -114,27 +226,31 @@
 	<script src="js/main.js"></script> <!-- Resource jQuery -->
 
 	<footer class="site-footer">
-		<p>&copy; Cabinet Kiné</p>
+		<p>© 2025 IMSSA – Tous droits réservés</p>
+		<p>Sports Center Regional Alsace, 5 Rue des Frères Lumière, 68200 Mulhouse</p>
+		<a target="_blank" href="https://imssa.monrdvkine.fr/Accueil/ContactCabinet/imssa">Contact</a> | <a
+			href="mentions-legales.html">Mentions légales</a>
 	</footer>
 
 
+
 	<script>
-fetch("videos.json")
-  .then(res => res.json())
-  .then(data => {
-    const menu = document.getElementById("menu");
+		fetch("videos.json")
+			.then(res => res.json())
+			.then(data => {
+				const menu = document.getElementById("menu");
 
-    for (const grandCategorie in data) {
-      const li = document.createElement("li");
-      li.classList.add("has-children");
+				for (const grandCategorie in data) {
+					const li = document.createElement("li");
+					li.classList.add("has-children");
 
-      // Nom de la grande catégorie
-      li.innerHTML = `<a href="#0">${grandCategorie}</a>`;
+					// Nom de la grande catégorie
+					li.innerHTML = `<a href="#0">${grandCategorie}</a>`;
 
-      // Sous-menu
-      const ulSecond = document.createElement("ul");
-      ulSecond.classList.add("cd-secondary-dropdown", "is-hidden");
-      ulSecond.innerHTML = `
+					// Sous-menu
+					const ulSecond = document.createElement("ul");
+					ulSecond.classList.add("cd-secondary-dropdown", "is-hidden");
+					ulSecond.innerHTML = `
         <li class="go-back"><a href="#0">Menu</a></li>
 		<li class="see-all">
 		<a href="tous-les-exercices.html?categorie=${encodeURIComponent(grandCategorie)}">
@@ -143,15 +259,15 @@ fetch("videos.json")
 		</li>
       `;
 
-      const sousCategories = data[grandCategorie];
-      for (const sousCat in sousCategories) {
-        const liSous = document.createElement("li");
-        liSous.classList.add("has-children");
-        liSous.innerHTML = `<a href="#0">${sousCat}</a>`;
+					const sousCategories = data[grandCategorie];
+					for (const sousCat in sousCategories) {
+						const liSous = document.createElement("li");
+						liSous.classList.add("has-children");
+						liSous.innerHTML = `<a href="#0">${sousCat}</a>`;
 
-        const ulVideos = document.createElement("ul");
-        ulVideos.classList.add("is-hidden");
-        ulVideos.innerHTML = `
+						const ulVideos = document.createElement("ul");
+						ulVideos.classList.add("is-hidden");
+						ulVideos.innerHTML = `
           <li class="go-back"><a href="#0">Retour</a></li>
           <li class="see-all">
 			  <a href="voir-plus.html?categorie=${encodeURIComponent(grandCategorie)}&souscat=${encodeURIComponent(sousCat)}">
@@ -160,31 +276,31 @@ fetch("videos.json")
 			</li>
         `;
 
-        sousCategories[sousCat].forEach(video => {
-		  const liVideo = document.createElement("li");
-		  // encodeURIComponent pour éviter les soucis avec les espaces ou caractères spéciaux
-		  liVideo.innerHTML = `<a href="video.html?url=${encodeURIComponent(video.url)}&titre=${encodeURIComponent(video.titre)}">${video.titre}</a>`;
-		  ulVideos.appendChild(liVideo);
-		});
+						sousCategories[sousCat].forEach(video => {
+							const liVideo = document.createElement("li");
+							// encodeURIComponent pour éviter les soucis avec les espaces ou caractères spéciaux
+							liVideo.innerHTML = `<a href="video.html?url=${encodeURIComponent(video.url)}&titre=${encodeURIComponent(video.titre)}">${video.titre}</a>`;
+							ulVideos.appendChild(liVideo);
+						});
 
 
-        liSous.appendChild(ulVideos);
-        ulSecond.appendChild(liSous);
-      }
+						liSous.appendChild(ulVideos);
+						ulSecond.appendChild(liSous);
+					}
 
-      li.appendChild(ulSecond);
-      // ⚠️ On ajoute directement au menu, pas dans un <li> vide
-      menu.insertAdjacentElement("beforebegin", li);
-    }
+					li.appendChild(ulSecond);
+					// ⚠️ On ajoute directement au menu, pas dans un <li> vide
+					menu.insertAdjacentElement("beforebegin", li);
+				}
 
-    // Supprimer le li vide qui sert juste de repère
-    menu.remove();
-	  
-	  // Après avoir injecté vos nouveaux éléments dans le DOM
-if (typeof window.reinitializeDropdownEvents === 'function') {
-    window.reinitializeDropdownEvents();
-}
-  });
+				// Supprimer le li vide qui sert juste de repère
+				menu.remove();
+
+				// Après avoir injecté vos nouveaux éléments dans le DOM
+				if (typeof window.reinitializeDropdownEvents === 'function') {
+					window.reinitializeDropdownEvents();
+				}
+			});
 
 	</script>
 
@@ -250,7 +366,11 @@ if (typeof window.reinitializeDropdownEvents === 'function') {
 				const favs = snap.exists() ? snap.data().favoris : [];
 				initButtons(favs, user.uid);
 			} else {
-				btnGoogle.textContent = "🔒";
+				if (largeurEcran > 1024) {
+					btnGoogle.textContent = "🔒 Se connecter";
+				} else {
+					btnGoogle.textContent = `🔒`;
+				}
 				initButtons([], null);
 			}
 		});
