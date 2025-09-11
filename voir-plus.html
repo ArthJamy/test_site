@@ -15,7 +15,7 @@
     <title>Site IMSSA | Voir plus</title>
     <style>
         /* Style pour les titres avec boutons favoris */
-        #titre{
+        #titre {
             margin-top: 50px;
             text-align: center;
             font-size: 2em;
@@ -113,47 +113,49 @@
                             <a href="#0">Contact</a>
                             <ul class="cd-dropdown-icons is-hidden">
                                 <li class="go-back"><a href="#0">Contact</a></li>
-                                								<li>
-									<a class="cd-dropdown-item item-1" href="https://www.instagram.com/imssa68?utm_source=ig_web_button_share_sheet">
-										<h3>Instagram</h3>
-										<p>Retrouvez nous sur Instagram</p>
-									</a>
-								</li>
+                                <li>
+                                    <a class="cd-dropdown-item item-1"
+                                        href="https://www.instagram.com/imssa68?utm_source=ig_web_button_share_sheet">
+                                        <h3>Instagram</h3>
+                                        <p>Retrouvez nous sur Instagram</p>
+                                    </a>
+                                </li>
 
-								<li>
-									<a class="cd-dropdown-item item-2" href="#0">
-										<h3>TikTok</h3>
-										<p>Retrouvez nous sur TikTok</p>
-									</a>
-								</li>
+                                <li>
+                                    <a class="cd-dropdown-item item-2" href="#0">
+                                        <h3>TikTok</h3>
+                                        <p>Retrouvez nous sur TikTok</p>
+                                    </a>
+                                </li>
 
-								<li>
-									<a class="cd-dropdown-item item-3" href="#0">
-										<h3>Mail</h3>
-										<p>Nous contacter par mail</p>
-									</a>
-								</li>
+                                <li>
+                                    <a class="cd-dropdown-item item-3" href="#0">
+                                        <h3>Mail</h3>
+                                        <p>Nous contacter par mail</p>
+                                    </a>
+                                </li>
 
-								<li>
-									<a class="cd-dropdown-item item-4" href="https://imssa.monrdvkine.fr">
-										<h3>MonRdvKiné</h3>
-										<p>Prendre rendez-vous</p>
-									</a>
-								</li>
+                                <li>
+                                    <a class="cd-dropdown-item item-4" href="https://imssa.monrdvkine.fr">
+                                        <h3>MonRdvKiné</h3>
+                                        <p>Prendre rendez-vous</p>
+                                    </a>
+                                </li>
 
-								<li>
-									<a class="cd-dropdown-item item-5" href="tel:+33389605426">
-										<h3>Téléphone</h3>
-										<p>03 89 60 54 26</p>
-									</a>
-								</li>
+                                <li>
+                                    <a class="cd-dropdown-item item-5" href="tel:+33389605426">
+                                        <h3>Téléphone</h3>
+                                        <p>03 89 60 54 26</p>
+                                    </a>
+                                </li>
 
-								<li>
-									<a class="cd-dropdown-item item-6" href="https://www.google.fr/maps/place/IMSSA+Institut+Médico-Sportif+Sud+Alsace/@47.7314575,7.3131683,16z/data=!3m1!4b1!4m6!3m5!1s0x47919bc25e3f6491:0xdd3ad8e21621fc7b!8m2!3d47.7314539!4d7.3157432!16s%2Fg%2F11fsm1b_fz?entry=ttu&g_ep=EgoyMDI1MDkwOC4wIKXMDSoASAFQAw%3D%3D">
-										<h3>Google Map</h3>
-										<p>Accéder à Google Map</p>
-									</a>
-								</li>
+                                <li>
+                                    <a class="cd-dropdown-item item-6"
+                                        href="https://www.google.fr/maps/place/IMSSA+Institut+Médico-Sportif+Sud+Alsace/@47.7314575,7.3131683,16z/data=!3m1!4b1!4m6!3m5!1s0x47919bc25e3f6491:0xdd3ad8e21621fc7b!8m2!3d47.7314539!4d7.3157432!16s%2Fg%2F11fsm1b_fz?entry=ttu&g_ep=EgoyMDI1MDkwOC4wIKXMDSoASAFQAw%3D%3D">
+                                        <h3>Google Map</h3>
+                                        <p>Accéder à Google Map</p>
+                                    </a>
+                                </li>
 
                             </ul> <!-- .cd-dropdown-icons -->
                         </li> <!-- .has-children -->
@@ -295,7 +297,12 @@
           `;
 
                     container.appendChild(div);
+
                 });
+                //  Après avoir ajouté toutes les vidéos → forcer l'initialisation des boutons
+                if (typeof initAllButtons === "function") {
+                    setTimeout(initAllButtons, 200);
+                }
             });
 
         // Fonction utilitaire pour transformer une URL YouTube en ID
@@ -306,7 +313,7 @@
         }
     </script>
 
-<script type="module">
+    <script type="module">
         // 1) Imports Firebase
         import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
         import {

@@ -315,9 +315,14 @@
 
                     contenu.appendChild(section);
                 });
+                // Après avoir ajouté toutes les vidéos → forcer l'initialisation des boutons
+                if (typeof initAllButtons === "function") {
+                    setTimeout(initAllButtons, 200);
+                }
             });
 
     </script>
+
 
     <script type="module">
         // 1) Imports Firebase
@@ -547,4 +552,3 @@
 </body>
 
 </html>
-
