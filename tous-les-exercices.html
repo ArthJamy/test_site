@@ -2,222 +2,223 @@
 <html lang="fr" class="no-js">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <link rel="stylesheet" href="css/reset.css"> <!-- CSS reset -->
-  <link rel="stylesheet" href="css/style.css"> <!-- Resource style -->
-  <script src="js/modernizr.js"></script> <!-- Modernizr -->
+    <link rel="stylesheet" href="css/reset.css"> <!-- CSS reset -->
+    <link rel="stylesheet" href="css/style.css"> <!-- Resource style -->
+    <script src="js/modernizr.js"></script> <!-- Modernizr -->
 
-  <!-- FAVICON -->
-  <link rel="icon" href="img/logoIMSSA.ico" type="image/x-icon">
+    <!-- FAVICON -->
+    <link rel="icon" href="img/logoIMSSA.ico" type="image/x-icon">
 
-  <title>Site IMSSA | Tous les exercices</title>
-  <style>
-    /* Style pour le titre principal */
-    #titre {
-      margin-top: 50px;
-      text-align: center;
-      font-size: 2em;
-    }
+    <title>Site IMSSA | Tous les exercices</title>
+    <style>
+        /* Style pour le titre principal */
+        #titre {
+            margin-top: 50px;
+            text-align: center;
+            font-size: 2em;
+        }
 
-    /* Style pour les titres de sections */
-    h2 {
-      font-size: 1.8em;
-      margin: 40px 0 20px 0;
-      text-align: center;
-      color: #111433;
-      border-bottom: 2px solid #111433;
-      padding-bottom: 10px;
-    }
+        /* Style pour les titres de sections */
+        h2 {
+            font-size: 1.8em;
+            margin: 40px 0 20px 0;
+            text-align: center;
+            color: #111433;
+            border-bottom: 2px solid #111433;
+            padding-bottom: 10px;
+        }
 
-    /* Style pour les titres avec boutons favoris */
-    .video-header {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 20px;
-      flex-wrap: wrap;
-      text-align: center;
-      margin-bottom: 20px;
-    }
+        /* Style pour les titres avec boutons favoris */
+        .video-header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            text-align: center;
+            margin-bottom: 20px;
+        }
 
-    .video-header h3 {
-      font-size: 1.5em;
-      margin: 0;
-    }
+        .video-header h3 {
+            font-size: 1.5em;
+            margin: 0;
+        }
 
-    /* Style bouton favoris */
-    .fav-btn {
-      background-color: #111433;
-      color: white;
-      font-size: 1.2em;
-      border: none;
-      padding: 0.3em 0.3em;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-      flex-shrink: 0;
-    }
+        /* Style bouton favoris */
+        .fav-btn {
+            background-color: #111433;
+            color: white;
+            font-size: 1.2em;
+            border: none;
+            padding: 0.3em 0.3em;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            flex-shrink: 0;
+        }
 
-    .fav-btn:hover {
-      background-color: #0C5073;
-    }
+        .fav-btn:hover {
+            background-color: #0C5073;
+        }
 
-    .video {
-      border-bottom: 1px solid #111433;
-      padding-bottom: 20px;
-      margin-bottom: 30px;
-    }
+        .video {
+            border-bottom: 1px solid #111433;
+            padding-bottom: 20px;
+        }
 
-    .video:last-child {
-      border-bottom: none;
-    }
+        .video:last-child {
+            border-bottom: none;
+        }
 
-    iframe {
-      width: 80%;
-      max-width: 900px;
-      height: 500px;
-      border: none;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-      display: block;
-      margin: 0 auto;
-    }
+        iframe {
+            width: 80%;
+            max-width: 900px;
+            height: 500px;
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            display: block;
+            margin: 0 auto;
+        }
 
-    #contenu {
-      max-width: 1000px;
-      margin: 0 auto;
-      padding: 0 20px;
-    }
+        #contenu {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
 
-    .section {
-      margin-bottom: 50px;
-    }
-  </style>
+        .section {
+            margin-bottom: 50px;
+        }
+    </style>
 </head>
 
 <body>
-  <header>
-    <div class="navbar">
-      <div>
-        <a href="index.html" class="nav__logo">
-          <img src="img/logoIMSSA.ico" alt="logo IMSSA" id="logo_header"> IMSSA accueil
-        </a>
-      </div>
-      <div class="cd-dropdown-wrapper">
+    <header>
+        <div class="navbar">
+            <div>
+                <a href="index.html" class="nav__logo">
+                    <img src="img/logoIMSSA.ico" alt="logo IMSSA" id="logo_header"> IMSSA accueil
+                </a>
+            </div>
+            <div class="cd-dropdown-wrapper">
 
-        <a href="menu.html" id="btn-fav" class="navbar-btn">❤️</a>
-        <a href="#0" id="btn-google" class="navbar-btn">🔒</a>
+                <a href="menu.html" id="btn-fav" class="navbar-btn">❤️</a>
+                <a href="#0" id="btn-google" class="navbar-btn">🔒</a>
 
-        <!--		 DROPDOWN		 -->
-        <a class="cd-dropdown-trigger" href="#0">Menu</a>
-        <nav class="cd-dropdown">
-          <h2>Menu</h2>
-          <a href="#0" class="cd-close">Fermer</a>
-          <ul class="cd-dropdown-content">
+                <!--		 DROPDOWN		 -->
+                <a class="cd-dropdown-trigger" href="#0">Menu</a>
+                <nav class="cd-dropdown">
+                    <h2>Menu</h2>
+                    <a href="#0" class="cd-close">Fermer</a>
+                    <ul class="cd-dropdown-content">
 
-            <li class="cd-divider">Exercices</li>
+                        <li class="cd-divider">Exercices</li>
 
-            <!-- Ici on injecte dynamiquement les catégories JSON -->
+                        <!-- Ici on injecte dynamiquement les catégories JSON -->
 
-            <li id="menu"></li>
+                        <li id="menu"></li>
 
-            <li class="cd-divider">Autre</li>
+                        <li class="cd-divider">Autre</li>
 
-            <li class="has-children">
-              <a href="#0">Contact</a>
-              <ul class="cd-dropdown-icons is-hidden">
-                <li class="go-back"><a href="#0">Contact</a></li>
-                <li>
-                  <a class="cd-dropdown-item item-1" href="https://www.instagram.com/imssa68?utm_source=ig_web_button_share_sheet">
-                    <h3>Instagram</h3>
-                    <p>Retrouvez nous sur Instagram</p>
-                  </a>
-                </li>
+                        <li class="has-children">
+                            <a href="#0">Contact</a>
+                            <ul class="cd-dropdown-icons is-hidden">
+                                <li class="go-back"><a href="#0">Contact</a></li>
+                                <li>
+                                    <a class="cd-dropdown-item item-1"
+                                        href="https://www.instagram.com/imssa68?utm_source=ig_web_button_share_sheet">
+                                        <h3>Instagram</h3>
+                                        <p>Retrouvez nous sur Instagram</p>
+                                    </a>
+                                </li>
 
-                <li>
-                  <a class="cd-dropdown-item item-2" href="#0">
-                    <h3>TikTok</h3>
-                    <p>Retrouvez nous sur TikTok</p>
-                  </a>
-                </li>
+                                <li>
+                                    <a class="cd-dropdown-item item-2" href="#0">
+                                        <h3>TikTok</h3>
+                                        <p>Retrouvez nous sur TikTok</p>
+                                    </a>
+                                </li>
 
-                <li>
-                  <a class="cd-dropdown-item item-3" href="#0">
-                    <h3>Mail</h3>
-                    <p>Nous contacter par mail</p>
-                  </a>
-                </li>
+                                <li>
+                                    <a class="cd-dropdown-item item-3" href="#0">
+                                        <h3>Mail</h3>
+                                        <p>Nous contacter par mail</p>
+                                    </a>
+                                </li>
 
-                <li>
-                  <a class="cd-dropdown-item item-4" href="https://imssa.monrdvkine.fr">
-                    <h3>MonRdvKiné</h3>
-                    <p>Prendre rendez-vous</p>
-                  </a>
-                </li>
+                                <li>
+                                    <a class="cd-dropdown-item item-4" href="https://imssa.monrdvkine.fr">
+                                        <h3>MonRdvKiné</h3>
+                                        <p>Prendre rendez-vous</p>
+                                    </a>
+                                </li>
 
-                <li>
-                  <a class="cd-dropdown-item item-5" href="tel:+33389605426">
-                    <h3>Téléphone</h3>
-                    <p>03 89 60 54 26</p>
-                  </a>
-                </li>
+                                <li>
+                                    <a class="cd-dropdown-item item-5" href="tel:+33389605426">
+                                        <h3>Téléphone</h3>
+                                        <p>03 89 60 54 26</p>
+                                    </a>
+                                </li>
 
-                <li>
-                  <a class="cd-dropdown-item item-6" href="https://www.google.fr/maps/place/IMSSA+Institut+Médico-Sportif+Sud+Alsace/@47.7314575,7.3131683,16z/data=!3m1!4b1!4m6!3m5!1s0x47919bc25e3f6491:0xdd3ad8e21621fc7b!8m2!3d47.7314539!4d7.3157432!16s%2Fg%2F11fsm1b_fz?entry=ttu&g_ep=EgoyMDI1MDkwOC4wIKXMDSoASAFQAw%3D%3D">
-                    <h3>Google Map</h3>
-                    <p>Accéder à Google Map</p>
-                  </a>
-                </li>
+                                <li>
+                                    <a class="cd-dropdown-item item-6"
+                                        href="https://www.google.fr/maps/place/IMSSA+Institut+Médico-Sportif+Sud+Alsace/@47.7314575,7.3131683,16z/data=!3m1!4b1!4m6!3m5!1s0x47919bc25e3f6491:0xdd3ad8e21621fc7b!8m2!3d47.7314539!4d7.3157432!16s%2Fg%2F11fsm1b_fz?entry=ttu&g_ep=EgoyMDI1MDkwOC4wIKXMDSoASAFQAw%3D%3D">
+                                        <h3>Google Map</h3>
+                                        <p>Accéder à Google Map</p>
+                                    </a>
+                                </li>
 
-              </ul> <!-- .cd-dropdown-icons -->
-            </li> <!-- .has-children -->
-          </ul> <!-- .cd-dropdown-content -->
-        </nav> <!-- .cd-dropdown -->
-      </div> <!-- .cd-dropdown-wrapper -->
-    </div>
+                            </ul> <!-- .cd-dropdown-icons -->
+                        </li> <!-- .has-children -->
+                    </ul> <!-- .cd-dropdown-content -->
+                </nav> <!-- .cd-dropdown -->
+            </div> <!-- .cd-dropdown-wrapper -->
+        </div>
 
-  </header>
+    </header>
 
-  <!--			 MAIN			 -->
+    <!--			 MAIN			 -->
 
-  <main class="cd-main-content">
-    <h1 id="titre"></h1>
-    <div id="contenu"></div>
+    <main class="cd-main-content">
+        <h1 id="titre"></h1>
+        <div id="contenu"></div>
 
-  </main>
-
-
-  <!--			 MAIN			 -->
-
-  <script src="js/jquery-2.1.1.js"></script>
-  <script src="js/jquery.menu-aim.js"></script> <!-- menu aim -->
-  <script src="js/main.js"></script> <!-- Resource jQuery -->
-
-  <footer class="site-footer">
-    <p>&copy; Cabinet Kiné</p>
-  </footer>
+    </main>
 
 
+    <!--			 MAIN			 -->
 
-  <script>
-    fetch("videos.json")
-      .then(res => res.json())
-      .then(data => {
-        const menu = document.getElementById("menu");
+    <script src="js/jquery-2.1.1.js"></script>
+    <script src="js/jquery.menu-aim.js"></script> <!-- menu aim -->
+    <script src="js/main.js"></script> <!-- Resource jQuery -->
 
-        for (const grandCategorie in data) {
-          const li = document.createElement("li");
-          li.classList.add("has-children");
+    <footer class="site-footer">
+        <p>&copy; Cabinet Kiné</p>
+    </footer>
 
-          // Nom de la grande catégorie
-          li.innerHTML = `<a href="#0">${grandCategorie}</a>`;
 
-          // Sous-menu
-          const ulSecond = document.createElement("ul");
-          ulSecond.classList.add("cd-secondary-dropdown", "is-hidden");
-          ulSecond.innerHTML = `
+
+    <script>
+        fetch("videos.json")
+            .then(res => res.json())
+            .then(data => {
+                const menu = document.getElementById("menu");
+
+                for (const grandCategorie in data) {
+                    const li = document.createElement("li");
+                    li.classList.add("has-children");
+
+                    // Nom de la grande catégorie
+                    li.innerHTML = `<a href="#0">${grandCategorie}</a>`;
+
+                    // Sous-menu
+                    const ulSecond = document.createElement("ul");
+                    ulSecond.classList.add("cd-secondary-dropdown", "is-hidden");
+                    ulSecond.innerHTML = `
         <li class="go-back"><a href="#0">Menu</a></li>
 		<li class="see-all">
 		<a href="tous-les-exercices.html?categorie=${encodeURIComponent(grandCategorie)}">
@@ -226,15 +227,15 @@
 		</li>
       `;
 
-          const sousCategories = data[grandCategorie];
-          for (const sousCat in sousCategories) {
-            const liSous = document.createElement("li");
-            liSous.classList.add("has-children");
-            liSous.innerHTML = `<a href="#0">${sousCat}</a>`;
+                    const sousCategories = data[grandCategorie];
+                    for (const sousCat in sousCategories) {
+                        const liSous = document.createElement("li");
+                        liSous.classList.add("has-children");
+                        liSous.innerHTML = `<a href="#0">${sousCat}</a>`;
 
-            const ulVideos = document.createElement("ul");
-            ulVideos.classList.add("is-hidden");
-            ulVideos.innerHTML = `
+                        const ulVideos = document.createElement("ul");
+                        ulVideos.classList.add("is-hidden");
+                        ulVideos.innerHTML = `
           <li class="go-back"><a href="#0">Retour</a></li>
           <li class="see-all">
 			  <a href="voir-plus.html?categorie=${encodeURIComponent(grandCategorie)}&souscat=${encodeURIComponent(sousCat)}">
@@ -243,170 +244,308 @@
 			</li>
         `;
 
-            sousCategories[sousCat].forEach(video => {
-              const liVideo = document.createElement("li");
-              // encodeURIComponent pour éviter les soucis avec les espaces ou caractères spéciaux
-              liVideo.innerHTML = `<a href="video.html?url=${encodeURIComponent(video.url)}&titre=${encodeURIComponent(video.titre)}">${video.titre}</a>`;
-              ulVideos.appendChild(liVideo);
+                        sousCategories[sousCat].forEach(video => {
+                            const liVideo = document.createElement("li");
+                            // encodeURIComponent pour éviter les soucis avec les espaces ou caractères spéciaux
+                            liVideo.innerHTML = `<a href="video.html?url=${encodeURIComponent(video.url)}&titre=${encodeURIComponent(video.titre)}">${video.titre}</a>`;
+                            ulVideos.appendChild(liVideo);
+                        });
+
+
+                        liSous.appendChild(ulVideos);
+                        ulSecond.appendChild(liSous);
+                    }
+
+                    li.appendChild(ulSecond);
+                    // ⚠️ On ajoute directement au menu, pas dans un <li> vide
+                    menu.insertAdjacentElement("beforebegin", li);
+                }
+
+                // Supprimer le li vide qui sert juste de repère
+                menu.remove();
+
+                // Après avoir injecté vos nouveaux éléments dans le DOM
+                if (typeof window.reinitializeDropdownEvents === 'function') {
+                    window.reinitializeDropdownEvents();
+                }
             });
 
+    </script>
 
-            liSous.appendChild(ulVideos);
-            ulSecond.appendChild(liSous);
-          }
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const categorie = decodeURIComponent(params.get("categorie"));
 
-          li.appendChild(ulSecond);
-          // ⚠️ On ajoute directement au menu, pas dans un <li> vide
-          menu.insertAdjacentElement("beforebegin", li);
-        }
+        document.getElementById("titre").textContent = categorie;
 
-        // Supprimer le li vide qui sert juste de repère
-        menu.remove();
+        fetch("videos.json")
+            .then(res => res.json())
+            .then(data => {
+                const contenu = document.getElementById("contenu");
+                const sousParties = data[categorie];
 
-        // Après avoir injecté vos nouveaux éléments dans le DOM
-        if (typeof window.reinitializeDropdownEvents === 'function') {
-          window.reinitializeDropdownEvents();
-        }
-      });
+                if (!sousParties) {
+                    contenu.innerHTML = "<p>Aucune vidéo trouvée pour cette catégorie.</p>";
+                    return;
+                }
 
-  </script>
+                Object.keys(sousParties).forEach(sousCat => {
+                    const section = document.createElement("div");
+                    section.className = "section";
+                    section.innerHTML = `<h2>${sousCat}</h2>`;
 
-  <script>
-    const params = new URLSearchParams(window.location.search);
-    const categorie = decodeURIComponent(params.get("categorie"));
+                    sousParties[sousCat].forEach(video => {
+                        // Extraction de l'ID YouTube depuis l'URL embed
+                        let videoId = "";
+                        if (video.url && video.url.includes("embed/")) {
+                            videoId = video.url.split("embed/")[1].split(/[?&]/)[0];
+                        }
 
-    document.getElementById("titre").textContent = categorie;
-
-    fetch("videos.json")
-      .then(res => res.json())
-      .then(data => {
-        const contenu = document.getElementById("contenu");
-        const sousParties = data[categorie];
-
-        if (!sousParties) {
-          contenu.innerHTML = "<p>Aucune vidéo trouvée pour cette catégorie.</p>";
-          return;
-        }
-
-        Object.keys(sousParties).forEach(sousCat => {
-          const section = document.createElement("div");
-          section.className = "section";
-          section.innerHTML = `<h2>${sousCat}</h2>`;
-
-          sousParties[sousCat].forEach(video => {
-            // Extraction de l'ID YouTube depuis l'URL embed
-            let videoId = "";
-            if (video.url && video.url.includes("embed/")) {
-              videoId = video.url.split("embed/")[1].split(/[?&]/)[0];
-            }
-
-            const videoDiv = document.createElement("div");
-            videoDiv.className = "video";
-            videoDiv.innerHTML = `
+                        const videoDiv = document.createElement("div");
+                        videoDiv.className = "video";
+                        videoDiv.innerHTML = `
               <div class="video-header">
                 <h3>${video.titre}</h3>
                 <button class="fav-btn" data-id="${videoId}" data-label="${video.titre}"></button>
               </div>
               <iframe src="${video.url}" allowfullscreen></iframe>
             `;
-            section.appendChild(videoDiv);
-          });
+                        section.appendChild(videoDiv);
+                    });
 
-          contenu.appendChild(section);
+                    contenu.appendChild(section);
+                });
+            });
+
+    </script>
+
+    // Script à remplacer dans vos pages - optimisation Firebase + lazy loading
+
+    <script type="module">
+        // 1) Imports Firebase
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
+        import {
+            getAuth,
+            onAuthStateChanged,
+            signInWithPopup,
+            GoogleAuthProvider,
+            signOut
+        } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
+        import {
+            getFirestore,
+            doc,
+            getDoc,
+            setDoc
+        } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
+
+        // 2) Config Firebase
+        const firebaseConfig = {
+            apiKey: "AIzaSyA7r18GtsCIi1n2AoaBFG-lAYyBPXFIw4Q",
+            authDomain: "imssa-2d3cb.firebaseapp.com",
+            projectId: "imssa-2d3cb",
+            storageBucket: "imssa-2d3cb.appspot.com",
+            messagingSenderId: "976927404721",
+            appId: "1:976927404721:web:3484dd21e9e52a1e692890",
+            measurementId: "G-SKTEPM9LKC"
+        };
+
+        // 3) Initialisation Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+
+        // Variables globales pour gérer l'état
+        let currentUser = null;
+        let userFavorites = [];
+        let buttonsInitialized = false;
+
+        // 4) Gestion du bouton Google Sign-In / Sign-Out
+        const btnGoogle = document.getElementById("btn-google");
+        btnGoogle.addEventListener("click", () => {
+            if (!currentUser) {
+                signInWithPopup(auth, new GoogleAuthProvider()).catch(console.error);
+            } else {
+                signOut(auth).catch(console.error);
+            }
         });
-      });
 
-  </script>
-
-  <script type="module">
-    // 1) Imports Firebase (v12 modules)
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
-    import {
-      getAuth,
-      onAuthStateChanged,
-      signInWithPopup,
-      GoogleAuthProvider,
-      signOut
-    } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
-    import {
-      getFirestore,
-      doc,
-      getDoc,
-      setDoc
-    } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
-
-    // 2) Ta config Firebase (copiée depuis la console > CDN > Compat ou Modules)
-    const firebaseConfig = {
-      apiKey: "AIzaSyA7r18GtsCIi1n2AoaBFG-lAYyBPXFIw4Q",
-      authDomain: "imssa-2d3cb.firebaseapp.com",
-      projectId: "imssa-2d3cb",
-      storageBucket: "imssa-2d3cb.appspot.com",
-      messagingSenderId: "976927404721",
-      appId: "1:976927404721:web:3484dd21e9e52a1e692890",
-      measurementId: "G-SKTEPM9LKC"
-    };
-
-    // 3) Initialisation Firebase
-    const app = initializeApp(firebaseConfig);
-    const auth = getAuth(app);
-    const db = getFirestore(app);
-
-    // 4) Gestion du bouton Google Sign-In / Sign-Out
-    const btnGoogle = document.getElementById("btn-google");
-    btnGoogle.addEventListener("click", () => {
-      if (!auth.currentUser) {
-        signInWithPopup(auth, new GoogleAuthProvider()).catch(console.error);
-      } else {
-        signOut(auth).catch(console.error);
-      }
-    });
-
-    // 5) Écoute de l'état de connexion et initialisation des boutons ❤️/🩶
-    const largeurEcran = window.innerWidth; // Largeur de l'écran visible
-    onAuthStateChanged(auth, async user => {
-      if (user) {
-        if (largeurEcran > 1024) {
-          btnGoogle.textContent = `👤 ${user.displayName}`;
-        } else {
-          btnGoogle.textContent = `👤`;
+        // 5) Fonction pour initialiser tous les boutons favoris
+        function initAllButtons() {
+            document.querySelectorAll(".fav-btn").forEach(btn => {
+                const { id, label } = btn.dataset;
+                if (id && label) {
+                    // Mettre à jour l'affichage
+                    btn.textContent = userFavorites.some(f => f.id === id) ? "❤️" : "🩶";
+                    // Ajouter l'event listener
+                    btn.onclick = () => toggleFavori(id, label, btn);
+                }
+            });
+            buttonsInitialized = true;
         }
-        // Récupère les favoris dans Firestore
-        const ref = doc(db, "users", user.uid);
-        const snap = await getDoc(ref);
-        const favs = snap.exists() ? snap.data().favoris : [];
-        initButtons(favs, user.uid);
-      } else {
-        btnGoogle.textContent = "🔒";
-        initButtons([], null);
-      }
-    });
 
-    // 6) Fonctions de gestion des favoris
-    async function toggleFavori(id, label, btn, uid) {
-      if (!uid) {
-        alert("Connectez-vous d'abord pour gérer vos favoris.");
-        return;
-      }
-      const ref = doc(db, "users", uid);
-      const snap = await getDoc(ref);
-      let favs = snap.exists() ? snap.data().favoris : [];
-      const idx = favs.findIndex(f => f.id === id);
-      if (idx !== -1) favs.splice(idx, 1);
-      else favs.push({ id, label });
-      // Sauvegarde en base
-      await setDoc(ref, { favoris: favs }, { merge: true });
-      // Mise à jour du bouton
-      btn.textContent = idx !== -1 ? "🩶" : "❤️";
-    }
+        // 6) Observer pour détecter les nouveaux boutons ajoutés dynamiquement
+        const observer = new MutationObserver((mutations) => {
+            let newButtonsAdded = false;
+            mutations.forEach(mutation => {
+                mutation.addedNodes.forEach(node => {
+                    if (node.nodeType === 1) { // Element node
+                        if (node.classList?.contains('fav-btn') || node.querySelector?.('.fav-btn')) {
+                            newButtonsAdded = true;
+                        }
+                    }
+                });
+            });
 
-    function initButtons(favs, uid) {
-      document.querySelectorAll(".fav-btn").forEach(btn => {
-        const { id, label } = btn.dataset;
-        btn.textContent = favs.some(f => f.id === id) ? "❤️" : "🩶";
-        btn.onclick = () => toggleFavori(id, label, btn, uid);
-      });
-    }
-  </script>
+            if (newButtonsAdded && currentUser !== null) {
+                // Petit délai pour laisser le temps au DOM de se stabiliser
+                setTimeout(initAllButtons, 100);
+            }
+        });
+
+        // Démarrer l'observation des changements DOM
+        observer.observe(document.body, {
+            childList: true,
+            subtree: true
+        });
+
+        // 7) Écoute de l'état de connexion
+        const largeurEcran = window.innerWidth;
+        onAuthStateChanged(auth, async user => {
+            currentUser = user;
+
+            if (user) {
+                if (largeurEcran > 1024) {
+                    btnGoogle.textContent = `👤 ${user.displayName}`;
+                } else {
+                    btnGoogle.textContent = `👤`;
+                }
+
+                // Récupérer les favoris
+                try {
+                    const ref = doc(db, "users", user.uid);
+                    const snap = await getDoc(ref);
+                    userFavorites = snap.exists() ? snap.data().favoris : [];
+                } catch (error) {
+                    console.error("Erreur lors de la récupération des favoris:", error);
+                    userFavorites = [];
+                }
+            } else {
+                btnGoogle.textContent = "🔒";
+                userFavorites = [];
+            }
+
+            // Initialiser tous les boutons existants
+            initAllButtons();
+        });
+
+        // 8) Fonction de gestion des favoris
+        async function toggleFavori(id, label, btn) {
+            if (!currentUser) {
+                alert("Connectez-vous d'abord pour gérer vos favoris.");
+                return;
+            }
+
+            try {
+                const ref = doc(db, "users", currentUser.uid);
+                const idx = userFavorites.findIndex(f => f.id === id);
+
+                if (idx !== -1) {
+                    userFavorites.splice(idx, 1);
+                } else {
+                    userFavorites.push({ id, label });
+                }
+
+                // Sauvegarde en base
+                await setDoc(ref, { favoris: userFavorites }, { merge: true });
+
+                // Mise à jour immédiate du bouton
+                btn.textContent = idx !== -1 ? "🩶" : "❤️";
+
+            } catch (error) {
+                console.error("Erreur lors de la mise à jour des favoris:", error);
+                alert("Erreur lors de la sauvegarde. Veuillez réessayer.");
+            }
+        }
+
+        // Nettoyer l'observer quand la page se ferme
+        window.addEventListener('beforeunload', () => {
+            observer.disconnect();
+        });
+    </script>
+
+    <!-- OPTIMISATION LAZY LOADING DES IFRAMES -->
+    <script>
+        // Lazy loading pour les iframes YouTube
+        function setupLazyLoading() {
+            const iframes = document.querySelectorAll('iframe[src*="youtube.com"]');
+
+            // Créer un Intersection Observer
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const iframe = entry.target;
+                        // Vérifier si l'iframe n'a pas déjà été chargée
+                        if (!iframe.dataset.loaded) {
+                            // Marquer comme chargée
+                            iframe.dataset.loaded = 'true';
+                            // L'iframe est déjà chargée par défaut, on peut juste ajouter des paramètres d'optimisation
+                            const currentSrc = iframe.src;
+                            if (!currentSrc.includes('loading=lazy')) {
+                                iframe.src = currentSrc + (currentSrc.includes('?') ? '&' : '?') + 'loading=lazy&rel=0&modestbranding=1';
+                            }
+                        }
+                        // Ne plus observer cette iframe
+                        observer.unobserve(iframe);
+                    }
+                });
+            }, {
+                // Commencer à charger quand l'iframe est à 200px de l'écran
+                rootMargin: '200px',
+                threshold: 0.01
+            });
+
+            // Observer toutes les iframes
+            iframes.forEach(iframe => {
+                observer.observe(iframe);
+            });
+        }
+
+        // Fonction pour optimiser les iframes existantes et nouvelles
+        function optimizeYouTubeIframes() {
+            // Observer pour les nouvelles iframes ajoutées dynamiquement
+            const mutationObserver = new MutationObserver((mutations) => {
+                let newIframes = false;
+                mutations.forEach(mutation => {
+                    mutation.addedNodes.forEach(node => {
+                        if (node.nodeType === 1) {
+                            if (node.tagName === 'IFRAME' || node.querySelector('iframe')) {
+                                newIframes = true;
+                            }
+                        }
+                    });
+                });
+
+                if (newIframes) {
+                    setTimeout(setupLazyLoading, 100);
+                }
+            });
+
+            mutationObserver.observe(document.body, {
+                childList: true,
+                subtree: true
+            });
+
+            // Setup initial
+            setupLazyLoading();
+        }
+
+        // Démarrer l'optimisation quand le DOM est prêt
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', optimizeYouTubeIframes);
+        } else {
+            optimizeYouTubeIframes();
+        }
+    </script>
 </body>
 
 </html>
