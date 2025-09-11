@@ -306,8 +306,8 @@
         }
     </script>
 
-    <script type="module">
-        // 1) Imports Firebase (v12 modules)
+<script type="module">
+        // 1) Imports Firebase
         import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
         import {
             getAuth,
@@ -323,7 +323,7 @@
             setDoc
         } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
 
-        // 2) Ta config Firebase (copiée depuis la console > CDN > Compat ou Modules)
+        // 2) Config Firebase
         const firebaseConfig = {
             apiKey: "AIzaSyA7r18GtsCIi1n2AoaBFG-lAYyBPXFIw4Q",
             authDomain: "imssa-2d3cb.firebaseapp.com",
@@ -339,60 +339,196 @@
         const auth = getAuth(app);
         const db = getFirestore(app);
 
+        // Variables globales pour gérer l'état
+        let currentUser = null;
+        let userFavorites = [];
+        let buttonsInitialized = false;
+
         // 4) Gestion du bouton Google Sign-In / Sign-Out
         const btnGoogle = document.getElementById("btn-google");
         btnGoogle.addEventListener("click", () => {
-            if (!auth.currentUser) {
+            if (!currentUser) {
                 signInWithPopup(auth, new GoogleAuthProvider()).catch(console.error);
             } else {
                 signOut(auth).catch(console.error);
             }
         });
 
-        // 5) Écoute de l'état de connexion et initialisation des boutons ❤️/🩶
-        const largeurEcran = window.innerWidth; // Largeur de l'écran visible
+        // 5) Fonction pour initialiser tous les boutons favoris
+        function initAllButtons() {
+            document.querySelectorAll(".fav-btn").forEach(btn => {
+                const { id, label } = btn.dataset;
+                if (id && label) {
+                    // Mettre à jour l'affichage
+                    btn.textContent = userFavorites.some(f => f.id === id) ? "❤️" : "🩶";
+                    // Ajouter l'event listener
+                    btn.onclick = () => toggleFavori(id, label, btn);
+                }
+            });
+            buttonsInitialized = true;
+        }
+
+        // 6) Observer pour détecter les nouveaux boutons ajoutés dynamiquement
+        const observer = new MutationObserver((mutations) => {
+            let newButtonsAdded = false;
+            mutations.forEach(mutation => {
+                mutation.addedNodes.forEach(node => {
+                    if (node.nodeType === 1) { // Element node
+                        if (node.classList?.contains('fav-btn') || node.querySelector?.('.fav-btn')) {
+                            newButtonsAdded = true;
+                        }
+                    }
+                });
+            });
+
+            if (newButtonsAdded && currentUser !== null) {
+                // Petit délai pour laisser le temps au DOM de se stabiliser
+                setTimeout(initAllButtons, 100);
+            }
+        });
+
+        // Démarrer l'observation des changements DOM
+        observer.observe(document.body, {
+            childList: true,
+            subtree: true
+        });
+
+        // 7) Écoute de l'état de connexion
+        const largeurEcran = window.innerWidth;
         onAuthStateChanged(auth, async user => {
+            currentUser = user;
+
             if (user) {
                 if (largeurEcran > 1024) {
                     btnGoogle.textContent = `👤 ${user.displayName}`;
                 } else {
                     btnGoogle.textContent = `👤`;
                 }
-                // Récupère les favoris dans Firestore
-                const ref = doc(db, "users", user.uid);
-                const snap = await getDoc(ref);
-                const favs = snap.exists() ? snap.data().favoris : [];
-                initButtons(favs, user.uid);
+
+                // Récupérer les favoris
+                try {
+                    const ref = doc(db, "users", user.uid);
+                    const snap = await getDoc(ref);
+                    userFavorites = snap.exists() ? snap.data().favoris : [];
+                } catch (error) {
+                    console.error("Erreur lors de la récupération des favoris:", error);
+                    userFavorites = [];
+                }
             } else {
                 btnGoogle.textContent = "🔒";
-                initButtons([], null);
+                userFavorites = [];
             }
+
+            // Initialiser tous les boutons existants
+            initAllButtons();
         });
 
-        // 6) Fonctions de gestion des favoris
-        async function toggleFavori(id, label, btn, uid) {
-            if (!uid) {
+        // 8) Fonction de gestion des favoris
+        async function toggleFavori(id, label, btn) {
+            if (!currentUser) {
                 alert("Connectez-vous d'abord pour gérer vos favoris.");
                 return;
             }
-            const ref = doc(db, "users", uid);
-            const snap = await getDoc(ref);
-            let favs = snap.exists() ? snap.data().favoris : [];
-            const idx = favs.findIndex(f => f.id === id);
-            if (idx !== -1) favs.splice(idx, 1);
-            else favs.push({ id, label });
-            // Sauvegarde en base
-            await setDoc(ref, { favoris: favs }, { merge: true });
-            // Mise à jour du bouton
-            btn.textContent = idx !== -1 ? "🩶" : "❤️";
+
+            try {
+                const ref = doc(db, "users", currentUser.uid);
+                const idx = userFavorites.findIndex(f => f.id === id);
+
+                if (idx !== -1) {
+                    userFavorites.splice(idx, 1);
+                } else {
+                    userFavorites.push({ id, label });
+                }
+
+                // Sauvegarde en base
+                await setDoc(ref, { favoris: userFavorites }, { merge: true });
+
+                // Mise à jour immédiate du bouton
+                btn.textContent = idx !== -1 ? "🩶" : "❤️";
+
+            } catch (error) {
+                console.error("Erreur lors de la mise à jour des favoris:", error);
+                alert("Erreur lors de la sauvegarde. Veuillez réessayer.");
+            }
         }
 
-        function initButtons(favs, uid) {
-            document.querySelectorAll(".fav-btn").forEach(btn => {
-                const { id, label } = btn.dataset;
-                btn.textContent = favs.some(f => f.id === id) ? "❤️" : "🩶";
-                btn.onclick = () => toggleFavori(id, label, btn, uid);
+        // Nettoyer l'observer quand la page se ferme
+        window.addEventListener('beforeunload', () => {
+            observer.disconnect();
+        });
+    </script>
+
+    <!-- OPTIMISATION LAZY LOADING DES IFRAMES -->
+    <script>
+        // Lazy loading pour les iframes YouTube
+        function setupLazyLoading() {
+            const iframes = document.querySelectorAll('iframe[src*="youtube.com"]');
+
+            // Créer un Intersection Observer
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const iframe = entry.target;
+                        // Vérifier si l'iframe n'a pas déjà été chargée
+                        if (!iframe.dataset.loaded) {
+                            // Marquer comme chargée
+                            iframe.dataset.loaded = 'true';
+                            // L'iframe est déjà chargée par défaut, on peut juste ajouter des paramètres d'optimisation
+                            const currentSrc = iframe.src;
+                            if (!currentSrc.includes('loading=lazy')) {
+                                iframe.src = currentSrc + (currentSrc.includes('?') ? '&' : '?') + 'loading=lazy&rel=0&modestbranding=1';
+                            }
+                        }
+                        // Ne plus observer cette iframe
+                        observer.unobserve(iframe);
+                    }
+                });
+            }, {
+                // Commencer à charger quand l'iframe est à 200px de l'écran
+                rootMargin: '200px',
+                threshold: 0.01
             });
+
+            // Observer toutes les iframes
+            iframes.forEach(iframe => {
+                observer.observe(iframe);
+            });
+        }
+
+        // Fonction pour optimiser les iframes existantes et nouvelles
+        function optimizeYouTubeIframes() {
+            // Observer pour les nouvelles iframes ajoutées dynamiquement
+            const mutationObserver = new MutationObserver((mutations) => {
+                let newIframes = false;
+                mutations.forEach(mutation => {
+                    mutation.addedNodes.forEach(node => {
+                        if (node.nodeType === 1) {
+                            if (node.tagName === 'IFRAME' || node.querySelector('iframe')) {
+                                newIframes = true;
+                            }
+                        }
+                    });
+                });
+
+                if (newIframes) {
+                    setTimeout(setupLazyLoading, 100);
+                }
+            });
+
+            mutationObserver.observe(document.body, {
+                childList: true,
+                subtree: true
+            });
+
+            // Setup initial
+            setupLazyLoading();
+        }
+
+        // Démarrer l'optimisation quand le DOM est prêt
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', optimizeYouTubeIframes);
+        } else {
+            optimizeYouTubeIframes();
         }
     </script>
 </body>

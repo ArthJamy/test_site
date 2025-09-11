@@ -98,50 +98,50 @@
                         <li class="cd-divider">Autre</li>
 
                         <li class="has-children">
-                            <a href="http://codyhouse.co/?p=748">Contact</a>
+                            <a href="#0">Contact</a>
                             <ul class="cd-dropdown-icons is-hidden">
                                 <li class="go-back"><a href="#0">Contact</a></li>
-                                <li>
-                                    <a class="cd-dropdown-item item-1" href="http://codyhouse.co/?p=748">
-                                        <h3>Instagram</h3>
-                                        <p>This is the item description</p>
-                                    </a>
-                                </li>
+                                								<li>
+									<a class="cd-dropdown-item item-1" href="https://www.instagram.com/imssa68?utm_source=ig_web_button_share_sheet">
+										<h3>Instagram</h3>
+										<p>Retrouvez nous sur Instagram</p>
+									</a>
+								</li>
 
-                                <li>
-                                    <a class="cd-dropdown-item item-2" href="http://codyhouse.co/?p=748">
-                                        <h3>TikTok</h3>
-                                        <p>This is the item description</p>
-                                    </a>
-                                </li>
+								<li>
+									<a class="cd-dropdown-item item-2" href="#0">
+										<h3>TikTok</h3>
+										<p>Retrouvez nous sur TikTok</p>
+									</a>
+								</li>
 
-                                <li>
-                                    <a class="cd-dropdown-item item-3" href="http://codyhouse.co/?p=748">
-                                        <h3>Mail</h3>
-                                        <p>This is the item description</p>
-                                    </a>
-                                </li>
+								<li>
+									<a class="cd-dropdown-item item-3" href="#0">
+										<h3>Mail</h3>
+										<p>Nous contacter par mail</p>
+									</a>
+								</li>
 
-                                <li>
-                                    <a class="cd-dropdown-item item-4" href="http://codyhouse.co/?p=748">
-                                        <h3>MonRdvKiné</h3>
-                                        <p>This is the item description</p>
-                                    </a>
-                                </li>
+								<li>
+									<a class="cd-dropdown-item item-4" href="https://imssa.monrdvkine.fr">
+										<h3>MonRdvKiné</h3>
+										<p>Prendre rendez-vous</p>
+									</a>
+								</li>
 
-                                <li>
-                                    <a class="cd-dropdown-item item-5" href="http://codyhouse.co/?p=748">
-                                        <h3>Téléphone</h3>
-                                        <p>This is the item description</p>
-                                    </a>
-                                </li>
+								<li>
+									<a class="cd-dropdown-item item-5" href="tel:+33389605426">
+										<h3>Téléphone</h3>
+										<p>03 89 60 54 26</p>
+									</a>
+								</li>
 
-                                <li>
-                                    <a class="cd-dropdown-item item-6" href="http://codyhouse.co/?p=748">
-                                        <h3>Google Map</h3>
-                                        <p>This is the item description</p>
-                                    </a>
-                                </li>
+								<li>
+									<a class="cd-dropdown-item item-6" href="https://www.google.fr/maps/place/IMSSA+Institut+Médico-Sportif+Sud+Alsace/@47.7314575,7.3131683,16z/data=!3m1!4b1!4m6!3m5!1s0x47919bc25e3f6491:0xdd3ad8e21621fc7b!8m2!3d47.7314539!4d7.3157432!16s%2Fg%2F11fsm1b_fz?entry=ttu&g_ep=EgoyMDI1MDkwOC4wIKXMDSoASAFQAw%3D%3D">
+										<h3>Google Map</h3>
+										<p>Accéder à Google Map</p>
+									</a>
+								</li>
 
                             </ul> <!-- .cd-dropdown-icons -->
                         </li> <!-- .has-children -->
@@ -242,9 +242,11 @@
 
                             sousCategories[sousCat].forEach(video => {
                                 const liVideo = document.createElement("li");
-                                liVideo.innerHTML = `<a href="${video.url}" target="_blank">${video.titre}</a>`;
+                                // encodeURIComponent pour éviter les soucis avec les espaces ou caractères spéciaux
+                                liVideo.innerHTML = `<a href="video.html?url=${encodeURIComponent(video.url)}&titre=${encodeURIComponent(video.titre)}">${video.titre}</a>`;
                                 ulVideos.appendChild(liVideo);
                             });
+
 
                             liSous.appendChild(ulVideos);
                             ulSecond.appendChild(liSous);
@@ -263,103 +265,163 @@
                         window.reinitializeDropdownEvents();
                     }
                 });
-
         </script>
 
 
 
 
 
-        <script type="module">
-            // 1) Imports Firebase (v12 modules)
-            import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
-            import {
-                getAuth,
-                onAuthStateChanged,
-                signInWithPopup,
-                GoogleAuthProvider,
-                signOut
-            } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
-            import {
-                getFirestore,
-                doc,
-                getDoc,
-                setDoc
-            } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
+<script type="module">
+        // 1) Imports Firebase
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
+        import {
+            getAuth,
+            onAuthStateChanged,
+            signInWithPopup,
+            GoogleAuthProvider,
+            signOut
+        } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
+        import {
+            getFirestore,
+            doc,
+            getDoc,
+            setDoc
+        } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
 
-            // 2) Ta config Firebase (copiée depuis la console > CDN > Compat ou Modules)
-            const firebaseConfig = {
-                apiKey: "AIzaSyA7r18GtsCIi1n2AoaBFG-lAYyBPXFIw4Q",
-                authDomain: "imssa-2d3cb.firebaseapp.com",
-                projectId: "imssa-2d3cb",
-                storageBucket: "imssa-2d3cb.appspot.com",
-                messagingSenderId: "976927404721",
-                appId: "1:976927404721:web:3484dd21e9e52a1e692890",
-                measurementId: "G-SKTEPM9LKC"
-            };
+        // 2) Config Firebase
+        const firebaseConfig = {
+            apiKey: "AIzaSyA7r18GtsCIi1n2AoaBFG-lAYyBPXFIw4Q",
+            authDomain: "imssa-2d3cb.firebaseapp.com",
+            projectId: "imssa-2d3cb",
+            storageBucket: "imssa-2d3cb.appspot.com",
+            messagingSenderId: "976927404721",
+            appId: "1:976927404721:web:3484dd21e9e52a1e692890",
+            measurementId: "G-SKTEPM9LKC"
+        };
 
-            // 3) Initialisation Firebase
-            const app = initializeApp(firebaseConfig);
-            const auth = getAuth(app);
-            const db = getFirestore(app);
+        // 3) Initialisation Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
 
-            // 4) Gestion du bouton Google Sign-In / Sign-Out
-            const btnGoogle = document.getElementById("btn-google");
-            btnGoogle.addEventListener("click", () => {
-                if (!auth.currentUser) {
-                    signInWithPopup(auth, new GoogleAuthProvider()).catch(console.error);
-                } else {
-                    signOut(auth).catch(console.error);
+        // Variables globales pour gérer l'état
+        let currentUser = null;
+        let userFavorites = [];
+        let buttonsInitialized = false;
+
+        // 4) Gestion du bouton Google Sign-In / Sign-Out
+        const btnGoogle = document.getElementById("btn-google");
+        btnGoogle.addEventListener("click", () => {
+            if (!currentUser) {
+                signInWithPopup(auth, new GoogleAuthProvider()).catch(console.error);
+            } else {
+                signOut(auth).catch(console.error);
+            }
+        });
+
+        // 5) Fonction pour initialiser tous les boutons favoris
+        function initAllButtons() {
+            document.querySelectorAll(".fav-btn").forEach(btn => {
+                const { id, label } = btn.dataset;
+                if (id && label) {
+                    // Mettre à jour l'affichage
+                    btn.textContent = userFavorites.some(f => f.id === id) ? "❤️" : "🩶";
+                    // Ajouter l'event listener
+                    btn.onclick = () => toggleFavori(id, label, btn);
                 }
             });
+            buttonsInitialized = true;
+        }
 
-            // 5) Écoute de l’état de connexion et initialisation des boutons ❤️/🩶
-            const largeurEcran = window.innerWidth; // Largeur de l'écran visible
-            onAuthStateChanged(auth, async user => {
-                if (user) {
-                    if (largeurEcran > 1024) {
-                        btnGoogle.textContent = `👤 ${user.displayName}`;
-                    } else {
-                        btnGoogle.textContent = `👤`;
+        // 6) Observer pour détecter les nouveaux boutons ajoutés dynamiquement
+        const observer = new MutationObserver((mutations) => {
+            let newButtonsAdded = false;
+            mutations.forEach(mutation => {
+                mutation.addedNodes.forEach(node => {
+                    if (node.nodeType === 1) { // Element node
+                        if (node.classList?.contains('fav-btn') || node.querySelector?.('.fav-btn')) {
+                            newButtonsAdded = true;
+                        }
                     }
-                    // Récupère les favoris dans Firestore
+                });
+            });
+
+            if (newButtonsAdded && currentUser !== null) {
+                // Petit délai pour laisser le temps au DOM de se stabiliser
+                setTimeout(initAllButtons, 100);
+            }
+        });
+
+        // Démarrer l'observation des changements DOM
+        observer.observe(document.body, {
+            childList: true,
+            subtree: true
+        });
+
+        // 7) Écoute de l'état de connexion
+        const largeurEcran = window.innerWidth;
+        onAuthStateChanged(auth, async user => {
+            currentUser = user;
+
+            if (user) {
+                if (largeurEcran > 1024) {
+                    btnGoogle.textContent = `👤 ${user.displayName}`;
+                } else {
+                    btnGoogle.textContent = `👤`;
+                }
+
+                // Récupérer les favoris
+                try {
                     const ref = doc(db, "users", user.uid);
                     const snap = await getDoc(ref);
-                    const favs = snap.exists() ? snap.data().favoris : [];
-                    initButtons(favs, user.uid);
+                    userFavorites = snap.exists() ? snap.data().favoris : [];
+                } catch (error) {
+                    console.error("Erreur lors de la récupération des favoris:", error);
+                    userFavorites = [];
+                }
+            } else {
+                btnGoogle.textContent = "🔒";
+                userFavorites = [];
+            }
+
+            // Initialiser tous les boutons existants
+            initAllButtons();
+        });
+
+        // 8) Fonction de gestion des favoris
+        async function toggleFavori(id, label, btn) {
+            if (!currentUser) {
+                alert("Connectez-vous d'abord pour gérer vos favoris.");
+                return;
+            }
+
+            try {
+                const ref = doc(db, "users", currentUser.uid);
+                const idx = userFavorites.findIndex(f => f.id === id);
+
+                if (idx !== -1) {
+                    userFavorites.splice(idx, 1);
                 } else {
-                    btnGoogle.textContent = "🔒";
-                    initButtons([], null);
+                    userFavorites.push({ id, label });
                 }
-            });
 
-            // 6) Fonctions de gestion des favoris
-            async function toggleFavori(id, label, btn, uid) {
-                if (!uid) {
-                    alert("Connectez-vous d’abord pour gérer vos favoris.");
-                    return;
-                }
-                const ref = doc(db, "users", uid);
-                const snap = await getDoc(ref);
-                let favs = snap.exists() ? snap.data().favoris : [];
-                const idx = favs.findIndex(f => f.id === id);
-                if (idx !== -1) favs.splice(idx, 1);
-                else favs.push({ id, label });
                 // Sauvegarde en base
-                await setDoc(ref, { favoris: favs }, { merge: true });
-                // Mise à jour du bouton
-                btn.textContent = idx !== -1 ? "🩶" : "❤️";
-            }
+                await setDoc(ref, { favoris: userFavorites }, { merge: true });
 
-            function initButtons(favs, uid) {
-                document.querySelectorAll(".fav-btn").forEach(btn => {
-                    const { id, label } = btn.dataset;
-                    btn.textContent = favs.some(f => f.id === id) ? "❤️" : "🩶";
-                    btn.onclick = () => toggleFavori(id, label, btn, uid);
-                });
+                // Mise à jour immédiate du bouton
+                btn.textContent = idx !== -1 ? "🩶" : "❤️";
+
+            } catch (error) {
+                console.error("Erreur lors de la mise à jour des favoris:", error);
+                alert("Erreur lors de la sauvegarde. Veuillez réessayer.");
             }
-        </script>
+        }
+
+        // Nettoyer l'observer quand la page se ferme
+        window.addEventListener('beforeunload', () => {
+            observer.disconnect();
+        });
+    </script>
 </body>
 
 </html>
-
