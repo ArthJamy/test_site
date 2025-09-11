@@ -13,42 +13,58 @@
     <link rel="icon" href="img/logoIMSSA.ico" type="image/x-icon">
 
     <title>Site IMSSA | Vidéo</title>
-	<style>    
-        h1 {
-        margin-top: 50px; /* pour éviter d’être sous le header */
-        text-align: center;
-        font-size: 2em;
+    <style>
+        .header-video {
+            margin-top: 50px;
+            /* espace pour ton header */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            /* espace entre titre et bouton */
+            flex-wrap: wrap;
+            /* évite le chevauchement sur petits écrans */
+            text-align: center;
+        }
+
+        .header-video h1 {
+            font-size: 2em;
+            margin: 0;
+        }
+
+        /* Style bouton favoris */
+        .fav-btn {
+            background-color: #111433;
+            color: white;
+            font-size: 2em;
+            border: none;
+            padding: 0.6em 1.2em;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .fav-btn:hover {
+            background-color: #0C5073;
         }
 
         .video-container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin: 30px auto;
-        max-width: 1000px;
-        padding: 0 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 30px auto;
+            max-width: 1000px;
+            padding: 0 20px;
         }
 
         iframe {
-        width: 100%;
-        max-width: 900px;
-        height: 500px;
-        border: none;
-        border-radius: 12px;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-        margin-bottom: 20px;
-        }
-
-        .button{
-            background-color: #111433;
-            font-size: 2em;
-            border-width: 0px;
-            padding: 1em;
-            border-radius: 10%;
-        }
-
-        .navbar-btn:hover {
-            background-color: #0C5073;
+            width: 100%;
+            max-width: 900px;
+            height: 500px;
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            margin-bottom: 20px;
         }
     </style>
 </head>
@@ -139,65 +155,66 @@
     <!--			 MAIN			 -->
 
     <main class="cd-main-content">
-        
-  <h1 id="titre"></h1>
 
-  <div class="video-container">
-    <iframe id="videoFrame" allowfullscreen></iframe>
-    <button id="favBtn" class="fav-btn"></button>
-  </div>
+        <div class="header-video">
+            <h1 id="titre"></h1>
+            <button id="favBtn" class="fav-btn"></button>
+        </div>
 
-  <script>
-    // Récupération des paramètres URL
-    const params = new URLSearchParams(window.location.search);
-    const titre = params.get("titre");
-    const url = params.get("url");
+        <div class="video-container">
+            <iframe id="videoFrame" allowfullscreen></iframe>
+        </div>
 
-    // Extraction de l'ID YouTube depuis l'URL embed
-    // Exemple : https://www.youtube.com/embed/CPVFoSCOdiw → CPVFoSCOdiw
-    let videoId = "";
-    if (url && url.includes("embed/")) {
-      videoId = url.split("embed/")[1].split(/[?&]/)[0];
-    }
+        <script>
+            // Récupération des paramètres URL
+            const params = new URLSearchParams(window.location.search);
+            const titre = params.get("titre");
+            const url = params.get("url");
 
-    // Injection dans la page
-    document.getElementById("titre").textContent = titre || "Vidéo";
-    document.getElementById("videoFrame").src = url;
+            // Extraction de l'ID YouTube depuis l'URL embed
+            // Exemple : https://www.youtube.com/embed/CPVFoSCOdiw → CPVFoSCOdiw
+            let videoId = "";
+            if (url && url.includes("embed/")) {
+                videoId = url.split("embed/")[1].split(/[?&]/)[0];
+            }
 
-    const favBtn = document.getElementById("favBtn");
-    favBtn.setAttribute("data-id", videoId);
-    favBtn.setAttribute("data-label", titre || "Vidéo");
-    favBtn.textContent = "❤️ Ajouter aux favoris";
-	  </script>
+            // Injection dans la page
+            document.getElementById("titre").textContent = titre;
+            document.getElementById("videoFrame").src = url;
 
-    <!--			 MAIN			 -->
+            const favBtn = document.getElementById("favBtn");
+            favBtn.setAttribute("data-id", videoId);
+            favBtn.setAttribute("data-label", titre);
+        </script>
 
-    <script src="js/jquery-2.1.1.js"></script>
-    <script src="js/jquery.menu-aim.js"></script> <!-- menu aim -->
-    <script src="js/main.js"></script> <!-- Resource jQuery -->
+        <!--			 MAIN			 -->
 
-    <footer class="site-footer">
-        <p>&copy; Cabinet Kiné</p>
-    </footer>
+        <script src="js/jquery-2.1.1.js"></script>
+        <script src="js/jquery.menu-aim.js"></script> <!-- menu aim -->
+        <script src="js/main.js"></script> <!-- Resource jQuery -->
+
+        <footer class="site-footer">
+            <p>&copy; Cabinet Kiné</p>
+        </footer>
 
 
-    <script>
-        fetch("videos.json")
-            .then(res => res.json())
-            .then(data => {
-                const menu = document.getElementById("menu");
+        <script>
+            fetch("videos.json")
+                .then(res => res.json())
+                .then(data => {
+                    const menu = document.getElementById("menu");
 
-                for (const grandCategorie in data) {
-                    const li = document.createElement("li");
-                    li.classList.add("has-children");
+                    for (const grandCategorie in data) {
+                        const li = document.createElement("li");
+                        li.classList.add("has-children");
 
-                    // Nom de la grande catégorie
-                    li.innerHTML = `<a href="#0">${grandCategorie}</a>`;
+                        // Nom de la grande catégorie
+                        li.innerHTML = `<a href="#0">${grandCategorie}</a>`;
 
-                    // Sous-menu
-                    const ulSecond = document.createElement("ul");
-                    ulSecond.classList.add("cd-secondary-dropdown", "is-hidden");
-                    ulSecond.innerHTML = `
+                        // Sous-menu
+                        const ulSecond = document.createElement("ul");
+                        ulSecond.classList.add("cd-secondary-dropdown", "is-hidden");
+                        ulSecond.innerHTML = `
         <li class="go-back"><a href="#0">Menu</a></li>
 		<li class="see-all">
 		<a href="tous-les-exercices.html?categorie=${encodeURIComponent(grandCategorie)}">
@@ -206,15 +223,15 @@
 		</li>
       `;
 
-                    const sousCategories = data[grandCategorie];
-                    for (const sousCat in sousCategories) {
-                        const liSous = document.createElement("li");
-                        liSous.classList.add("has-children");
-                        liSous.innerHTML = `<a href="#0">${sousCat}</a>`;
+                        const sousCategories = data[grandCategorie];
+                        for (const sousCat in sousCategories) {
+                            const liSous = document.createElement("li");
+                            liSous.classList.add("has-children");
+                            liSous.innerHTML = `<a href="#0">${sousCat}</a>`;
 
-                        const ulVideos = document.createElement("ul");
-                        ulVideos.classList.add("is-hidden");
-                        ulVideos.innerHTML = `
+                            const ulVideos = document.createElement("ul");
+                            ulVideos.classList.add("is-hidden");
+                            ulVideos.innerHTML = `
           <li class="go-back"><a href="#0">Retour</a></li>
           <li class="see-all">
 			  <a href="voir-plus.html?categorie=${encodeURIComponent(grandCategorie)}&souscat=${encodeURIComponent(sousCat)}">
@@ -223,128 +240,125 @@
 			</li>
         `;
 
-                        sousCategories[sousCat].forEach(video => {
-                            const liVideo = document.createElement("li");
-                            liVideo.innerHTML = `<a href="${video.url}" target="_blank">${video.titre}</a>`;
-                            ulVideos.appendChild(liVideo);
-                        });
+                            sousCategories[sousCat].forEach(video => {
+                                const liVideo = document.createElement("li");
+                                liVideo.innerHTML = `<a href="${video.url}" target="_blank">${video.titre}</a>`;
+                                ulVideos.appendChild(liVideo);
+                            });
 
-                        liSous.appendChild(ulVideos);
-                        ulSecond.appendChild(liSous);
+                            liSous.appendChild(ulVideos);
+                            ulSecond.appendChild(liSous);
+                        }
+
+                        li.appendChild(ulSecond);
+                        // ⚠️ On ajoute directement au menu, pas dans un <li> vide
+                        menu.insertAdjacentElement("beforebegin", li);
                     }
 
-                    li.appendChild(ulSecond);
-                    // ⚠️ On ajoute directement au menu, pas dans un <li> vide
-                    menu.insertAdjacentElement("beforebegin", li);
-                }
+                    // Supprimer le li vide qui sert juste de repère
+                    menu.remove();
 
-                // Supprimer le li vide qui sert juste de repère
-                menu.remove();
+                    // Après avoir injecté vos nouveaux éléments dans le DOM
+                    if (typeof window.reinitializeDropdownEvents === 'function') {
+                        window.reinitializeDropdownEvents();
+                    }
+                });
 
-                // Après avoir injecté vos nouveaux éléments dans le DOM
-                if (typeof window.reinitializeDropdownEvents === 'function') {
-                    window.reinitializeDropdownEvents();
-                }
-            });
-
-    </script>
+        </script>
 
 
 
 
 
-    <script type="module">
-        // 1) Imports Firebase (v12 modules)
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
-        import {
-            getAuth,
-            onAuthStateChanged,
-            signInWithPopup,
-            GoogleAuthProvider,
-            signOut
-        } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
-        import {
-            getFirestore,
-            doc,
-            getDoc,
-            setDoc
-        } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
+        <script type="module">
+            // 1) Imports Firebase (v12 modules)
+            import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
+            import {
+                getAuth,
+                onAuthStateChanged,
+                signInWithPopup,
+                GoogleAuthProvider,
+                signOut
+            } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
+            import {
+                getFirestore,
+                doc,
+                getDoc,
+                setDoc
+            } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
 
-        // 2) Ta config Firebase (copiée depuis la console > CDN > Compat ou Modules)
-        const firebaseConfig = {
-            apiKey: "AIzaSyA7r18GtsCIi1n2AoaBFG-lAYyBPXFIw4Q",
-            authDomain: "imssa-2d3cb.firebaseapp.com",
-            projectId: "imssa-2d3cb",
-            storageBucket: "imssa-2d3cb.appspot.com",
-            messagingSenderId: "976927404721",
-            appId: "1:976927404721:web:3484dd21e9e52a1e692890",
-            measurementId: "G-SKTEPM9LKC"
-        };
+            // 2) Ta config Firebase (copiée depuis la console > CDN > Compat ou Modules)
+            const firebaseConfig = {
+                apiKey: "AIzaSyA7r18GtsCIi1n2AoaBFG-lAYyBPXFIw4Q",
+                authDomain: "imssa-2d3cb.firebaseapp.com",
+                projectId: "imssa-2d3cb",
+                storageBucket: "imssa-2d3cb.appspot.com",
+                messagingSenderId: "976927404721",
+                appId: "1:976927404721:web:3484dd21e9e52a1e692890",
+                measurementId: "G-SKTEPM9LKC"
+            };
 
-        // 3) Initialisation Firebase
-        const app = initializeApp(firebaseConfig);
-        const auth = getAuth(app);
-        const db = getFirestore(app);
+            // 3) Initialisation Firebase
+            const app = initializeApp(firebaseConfig);
+            const auth = getAuth(app);
+            const db = getFirestore(app);
 
-        // 4) Gestion du bouton Google Sign-In / Sign-Out
-        const btnGoogle = document.getElementById("btn-google");
-        btnGoogle.addEventListener("click", () => {
-            if (!auth.currentUser) {
-                signInWithPopup(auth, new GoogleAuthProvider()).catch(console.error);
-            } else {
-                signOut(auth).catch(console.error);
-            }
-        });
-
-        // 5) Écoute de l’état de connexion et initialisation des boutons ❤️/🩶
-        const largeurEcran = window.innerWidth; // Largeur de l'écran visible
-        onAuthStateChanged(auth, async user => {
-            if (user) {
-                if (largeurEcran > 1024) {
-                    btnGoogle.textContent = `👤 ${user.displayName}`;
+            // 4) Gestion du bouton Google Sign-In / Sign-Out
+            const btnGoogle = document.getElementById("btn-google");
+            btnGoogle.addEventListener("click", () => {
+                if (!auth.currentUser) {
+                    signInWithPopup(auth, new GoogleAuthProvider()).catch(console.error);
                 } else {
-                    btnGoogle.textContent = `👤`;
+                    signOut(auth).catch(console.error);
                 }
-                // Récupère les favoris dans Firestore
-                const ref = doc(db, "users", user.uid);
-                const snap = await getDoc(ref);
-                const favs = snap.exists() ? snap.data().favoris : [];
-                initButtons(favs, user.uid);
-            } else {
-                btnGoogle.textContent = "🔒";
-                initButtons([], null);
-            }
-        });
-
-        // 6) Fonctions de gestion des favoris
-        async function toggleFavori(id, label, btn, uid) {
-            if (!uid) {
-                alert("Connectez-vous d’abord pour gérer vos favoris.");
-                return;
-            }
-            const ref = doc(db, "users", uid);
-            const snap = await getDoc(ref);
-            let favs = snap.exists() ? snap.data().favoris : [];
-            const idx = favs.findIndex(f => f.id === id);
-            if (idx !== -1) favs.splice(idx, 1);
-            else favs.push({ id, label });
-            // Sauvegarde en base
-            await setDoc(ref, { favoris: favs }, { merge: true });
-            // Mise à jour du bouton
-            btn.textContent = idx !== -1 ? "🩶" : "❤️";
-        }
-
-        function initButtons(favs, uid) {
-            document.querySelectorAll(".fav-btn").forEach(btn => {
-                const { id, label } = btn.dataset;
-                btn.textContent = favs.some(f => f.id === id) ? "❤️" : "🩶";
-                btn.onclick = () => toggleFavori(id, label, btn, uid);
             });
-        }
-    </script>
+
+            // 5) Écoute de l’état de connexion et initialisation des boutons ❤️/🩶
+            const largeurEcran = window.innerWidth; // Largeur de l'écran visible
+            onAuthStateChanged(auth, async user => {
+                if (user) {
+                    if (largeurEcran > 1024) {
+                        btnGoogle.textContent = `👤 ${user.displayName}`;
+                    } else {
+                        btnGoogle.textContent = `👤`;
+                    }
+                    // Récupère les favoris dans Firestore
+                    const ref = doc(db, "users", user.uid);
+                    const snap = await getDoc(ref);
+                    const favs = snap.exists() ? snap.data().favoris : [];
+                    initButtons(favs, user.uid);
+                } else {
+                    btnGoogle.textContent = "🔒";
+                    initButtons([], null);
+                }
+            });
+
+            // 6) Fonctions de gestion des favoris
+            async function toggleFavori(id, label, btn, uid) {
+                if (!uid) {
+                    alert("Connectez-vous d’abord pour gérer vos favoris.");
+                    return;
+                }
+                const ref = doc(db, "users", uid);
+                const snap = await getDoc(ref);
+                let favs = snap.exists() ? snap.data().favoris : [];
+                const idx = favs.findIndex(f => f.id === id);
+                if (idx !== -1) favs.splice(idx, 1);
+                else favs.push({ id, label });
+                // Sauvegarde en base
+                await setDoc(ref, { favoris: favs }, { merge: true });
+                // Mise à jour du bouton
+                btn.textContent = idx !== -1 ? "🩶" : "❤️";
+            }
+
+            function initButtons(favs, uid) {
+                document.querySelectorAll(".fav-btn").forEach(btn => {
+                    const { id, label } = btn.dataset;
+                    btn.textContent = favs.some(f => f.id === id) ? "❤️" : "🩶";
+                    btn.onclick = () => toggleFavori(id, label, btn, uid);
+                });
+            }
+        </script>
 </body>
 
 </html>
-
-
-
