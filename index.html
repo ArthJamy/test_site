@@ -161,10 +161,12 @@ fetch("videos.json")
         `;
 
         sousCategories[sousCat].forEach(video => {
-          const liVideo = document.createElement("li");
-          liVideo.innerHTML = `<a href="${video.url}" target="_blank">${video.titre}</a>`;
-          ulVideos.appendChild(liVideo);
-        });
+		  const liVideo = document.createElement("li");
+		  // encodeURIComponent pour éviter les soucis avec les espaces ou caractères spéciaux
+		  liVideo.innerHTML = `<a href="video.html?url=${encodeURIComponent(video.url)}&titre=${encodeURIComponent(video.titre)}">${video.titre}</a>`;
+		  ulVideos.appendChild(liVideo);
+		});
+
 
         liSous.appendChild(ulVideos);
         ulSecond.appendChild(liSous);
