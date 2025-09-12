@@ -14,12 +14,13 @@
 
 	<title>Site IMSSA | Accueil</title>
 	<style>
-		.hero-text p{
+		.hero-text p {
 			background: white;
 			padding: 15px;
 			border-radius: 10px;
 			text-align: center;
 			box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+			font-size: 1.05em;
 		}
 
 		.hero-text h1 {
@@ -27,23 +28,25 @@
 			text-align: center;
 			font-size: 2em;
 		}
-	
+
 		.hero-img {
 			width: 100%;
 			height: auto;
 			border-radius: 20px;
 			box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-			display: block; /* Transforme l'image en élément de bloc */
-			margin: 0 auto; /* Centre horizontalement */
+			display: block;
+			/* Transforme l'image en élément de bloc */
+			margin: 0 auto;
+			/* Centre horizontalement */
 			padding-top: 10px;
 		}
-	
+
 		.team-grid {
 			display: grid;
 			grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
 			gap: 20px;
 		}
-	
+
 		.praticien-card {
 			background: white;
 			padding: 15px;
@@ -52,23 +55,33 @@
 			box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 			text-align: center;
 		}
-	
+
 		.praticien-card:hover {
 			border: 2px solid #1AA9BE;
 			transform: translateX(2px);
 			box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 		}
-	
+
 		.praticien-card img {
 			height: 40%;
 		}
+
 		@media only screen and (min-width: 1024px) {
 			.hero-img {
 				width: 50%;
 				grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 			}
+
 			.hero-text h1::after {
 				content: " - Kiné • Sport • Santé";
+			}
+
+			.hero-text p {
+				font-size: 1.2em;
+			}
+
+			.hero-text a:hover {
+				text-decoration: underline;
 			}
 		}
 	</style>
@@ -93,12 +106,11 @@
 					<h2>Menu</h2>
 					<a href="#0" class="cd-close">Fermer</a>
 					<ul class="cd-dropdown-content">
+						<li> <a href="index.html">Accueil</a> </li>
 
 						<li class="cd-divider">Exercices</li>
 
 						<!-- Ici on injecte dynamiquement les catégories JSON -->
-
-						<li id="menu"></li>
 
 						<li class="cd-divider">Autre</li>
 
@@ -115,14 +127,14 @@
 								</li>
 
 								<li>
-									<a class="cd-dropdown-item item-2" target="_blank" href="#0">
+									<a class="cd-dropdown-item item-2" href="#0">
 										<h3>TikTok</h3>
 										<p>Retrouvez nous sur TikTok</p>
 									</a>
 								</li>
 
 								<li>
-									<a class="cd-dropdown-item item-3" target="_blank" href="#0">
+									<a class="cd-dropdown-item item-3" href="mailto:imssa68@gmail.com">
 										<h3>Mail</h3>
 										<p>Nous contacter par mail</p>
 									</a>
@@ -137,9 +149,9 @@
 								</li>
 
 								<li>
-									<a class="cd-dropdown-item item-5" target="_blank" href="tel:+33389605426">
+									<a class="cd-dropdown-item item-5" href="tel:+33389605426">
 										<h3>Téléphone</h3>
-										<p>03 89 60 54 26</p>
+										<p>+33 3 89 60 54 26</p>
 									</a>
 								</li>
 
@@ -165,12 +177,13 @@
 	<main class="cd-main-content">
 		<section class="hero">
 			<div class="hero-text">
-				<h1>Cabinet IMSSA</h1>
+				<h1>Cabinet IMSSA 68</h1>
 				<p>Bienvenue sur le site du cabinet IMSSA.<br>
 					Vous trouverez ici une bibliothèque de vidéos conçues
 					pour vous accompagner dans vos exercices.
-					Chaque patient peut suivre les mouvements expliqués, s’entraîner en toute autonomie et même ajouter ses vidéos
-					préférées en favoris afin de les retrouver rapidement.</p>
+					Vous pouvez suivre les mouvements expliqués, s’entraîner en toute autonomie et même ajouter ses
+					vidéos
+					préférées en <a href="menu.html">favoris</a> afin de les retrouver rapidement.</p>
 			</div>
 			<img src="img/cabinet.webp" alt="Photo du cabinet" class="hero-img">
 		</section>
@@ -183,35 +196,30 @@
 					<div class="praticien-card">
 						<img src="img/praticienne.svg" alt="praticienne">
 						<h3>BUOB Chloé</h3>
-						<p>Kiné du sport</p>
 					</div>
 				</a>
 				<a target="_blank" href="https://imssa.monrdvkine.fr/p/chaudet-arnaud">
 					<div class="praticien-card">
 						<img src="img/praticien.svg" alt="praticien">
 						<h3>CHAUDET Arnaud</h3>
-						<p>Kiné du sport</p>
 					</div>
 				</a>
 				<a target="_blank" href="https://imssa.monrdvkine.fr/p/laurino-calogero">
 					<div class="praticien-card">
 						<img src="img/praticien.svg" alt="praticien">
 						<h3>LAURINO Calogero</h3>
-						<p>Kiné du sport</p>
 					</div>
 				</a>
 				<a target="_blank" href="https://imssa.monrdvkine.fr/p/nstutz">
 					<div class="praticien-card">
 						<img src="img/praticien.svg" alt="praticien">
 						<h3>STUTZ Nicolas</h3>
-						<p>Kiné du sport</p>
 					</div>
 				</a>
 				<a target="_blank" href="https://imssa.monrdvkine.fr/p/grunenwald-maeva">
 					<div class="praticien-card">
 						<img src="img/praticienne.svg" alt="praticienne">
 						<h3>GRUNENWALD Maeva</h3>
-						<p>Kiné du sport</p>
 					</div>
 				</a>
 			</div>
@@ -226,10 +234,10 @@
 	<script src="js/main.js"></script> <!-- Resource jQuery -->
 
 	<footer class="site-footer">
-		<p>© 2025 IMSSA – Tous droits réservés</p>
-		<p>Sports Center Regional Alsace, 5 Rue des Frères Lumière, 68200 Mulhouse</p>
+		<p>© 2025 IMSSA 68 – Tous droits réservés</p>
+		<p>Centre sportif régional d'Alsace , 5 Rue des Frères Lumière, 68200 Mulhouse</p>
 		<a target="_blank" href="https://imssa.monrdvkine.fr/Accueil/ContactCabinet/imssa">Contact</a> | <a
-			href="mentions-legales.html">Mentions légales</a>
+			target="_blank" href="mentions-legales.html">Mentions légales</a>
 	</footer>
 
 
@@ -289,6 +297,7 @@
 					}
 
 					li.appendChild(ulSecond);
+					
 					// ⚠️ On ajoute directement au menu, pas dans un <li> vide
 					menu.insertAdjacentElement("beforebegin", li);
 				}
